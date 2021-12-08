@@ -1,0 +1,29 @@
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    
+
+    input {
+      margin-bottom: 15px;
+    }
+
+    [required]:focus {
+      border: 2px solid blue;
+    }
+
+    .btn {
+        font-size:1.2rem;
+    }
+  }
+
+  .error-status {
+    color: blue;
+  }
+
+  .error-verify {
+    background-color:red;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px;
+  }

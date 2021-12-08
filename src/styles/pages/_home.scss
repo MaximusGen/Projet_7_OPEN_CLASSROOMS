@@ -1,0 +1,63 @@
+
+nav li {
+  font-size: 1.3rem;
+  color: #000;
+  margin-left: 20px;
+}
+
+nav ul {
+  cursor: pointer;
+}
+
+
+.image-bg {
+  background-image: url(../img/bg-home.jpg);
+}
+
+.bg-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-size-h1 {
+  font-size: 3rem;
+}
+
+.text-size-h5 {
+  font-size: 1.2rem;
+}
+
+// FORM CONTAINER
+
+.connection-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #000;
+}
+
+
+.active-btn {
+  border-bottom: 1px solid #000;
+}
+
+// FOOTER
+
+.bg-fb {
+  background-color: #3b5998;
+}
+.bg-tw {
+  background-color: #55acee;
+}
+.bg-inst {
+  background-color: #ac2bac;
+}
+.bg-lkd {
+  background-color: #0082ca;
+}
+
+@media (min-width: 992px) {
+  #intro-example {
+    height: 1000px;
+  }
+}
