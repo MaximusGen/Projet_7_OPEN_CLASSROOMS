@@ -1,14 +1,15 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
+
+const token = localStorage.getItem('token');
 
 export const GET_USER = "GET_USER";
 
-export const getUser = () => {
+export const getUser = (uid) => {
     return (dispatch) => {
         return axios
-        .get(`${process.env.REACT_APP_API_URL}api/auth/` + Cookies.get('userId'), 
+        .get(`${process.env.REACT_APP_API_URL}api/auth/${uid}`, 
         {
-            headers: { 'Authorization': 'Bearer ' + Cookies.get("token")}
+            headers: { 'Authorization': 'Bearer ' + token}
         }
         )
         .then((res) =>{

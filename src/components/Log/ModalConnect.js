@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 import React, { useState } from "react";
 
 export default function ModalConnect() {
@@ -16,9 +15,9 @@ export default function ModalConnect() {
       })
       .then((res) => {
         console.log(res.data);
-        Cookies.set("token", res.data.token , {expires: 1, secure: true});
-        Cookies.set("userId", res.data.userId)
-        // window.location = "/profile"
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userId", res.data.userId);
+        window.location = "/profile"
       })
       .catch((res) => console.log(res.data))
     }

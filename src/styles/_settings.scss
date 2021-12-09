@@ -1,17 +1,21 @@
-
 $background-primary: #f1dfd1;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    font-family: "Josefin Sans", sans-serif;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+}
 
-  .bg {
-    background-color: $background-primary;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bg {
+  background-color: $background-primary;
+}
