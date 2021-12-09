@@ -1,7 +1,13 @@
 import React, { useContext } from "react";
 import { UidContext } from "../components/AppContext";
+
+// On importe Link pour remplacer la balise <a>
 import { Link } from "react-router-dom";
+
+// On importe les components pour la page Post
 import Footer from "../components/Footer";
+import NavbarOff from "../components/Navbar/NavbarOff";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function Post() {
   const uid = useContext(UidContext);
@@ -9,53 +15,14 @@ export default function Post() {
     <>
       {uid ? (
         <>
-          {/* HEADER */}
+          {/* Header avec le component Navbar  */}
 
           <header>
-            {/* <!-- Navbar --> */}
-
-            <nav className="navbar navbar-expand-lg navbar-light bg">
-              <div className="container-fluid">
-                <img src="img/groupomania.png" alt="" height="50px" />
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  data-mdb-toggle="collapse"
-                  data-mdb-target="#navbarExample01"
-                  aria-controls="navbarExample01"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <i className="fas fa-bars"></i>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarExample01">
-                  <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item active">
-                      <a
-                        className="nav-link"
-                        aria-current="page"
-                        href="/profile"
-                      >
-                        Profil
-                      </a>
-                    </li>
-                    <li className="nav-item active">
-                      <a className="nav-link" aria-current="page" href="/post">
-                        Post
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" aria-current="page" href="#deco">
-                        Se déconnecter
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
+            <Navbar />
           </header>
 
-          {/* MAIN */}
+          {/* Main si l'utilisateur est connecté : */}
+
           <div className="main">
             <div className="container">
               <div className="row flex-center">
@@ -76,7 +43,7 @@ export default function Post() {
                           id="textAreaExample"
                           rows="4"
                         ></textarea>
-                        <label className="form-label" for="textAreaExample">
+                        <label className="form-label" htmlFor="textAreaExample">
                           Texte
                         </label>
                       </div>
@@ -123,7 +90,7 @@ export default function Post() {
                       </p>
                       <img
                         src="../img/thumbnail_IMG_2028.jpg"
-                        class="img mb-5"
+                        className="img mb-5"
                         alt=""
                         width="100%"
                       />
@@ -157,7 +124,7 @@ export default function Post() {
                           id="typeText"
                           className="form-control"
                         />
-                        <label className="form-label" for="typeText">
+                        <label className="form-label" htmlFor="typeText">
                           Votre commentaire
                         </label>
                       </div>
@@ -173,37 +140,19 @@ export default function Post() {
         </>
       ) : (
         <>
+          {/* Header avec le component NavbarOff */}
+
           <header>
-            <nav className="navbar navbar-expand-lg navbar-light bg">
-              <div className="container-fluid">
-                <img src="img/groupomania.png" alt="" height="50px" />
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  data-mdb-toggle="collapse"
-                  data-mdb-target="#navbarExample01"
-                  aria-controls="navbarExample01"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <i className="fas fa-bars"></i>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarExample01">
-                  <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li>
-                      <Link to="/">Home</Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
+            <NavbarOff />
           </header>
+
+          {/* Main si l'utilisateur n'est pas connecté : */}
 
           <div className="main">
             <div className="profil-off">
               <div className="content-profil-off">
                 <h1 className="text-center">
-                  VOUS NE POUVEZ PAS ACCEDER A CETTE PAGE ⚠️ !
+                  VOUS NE POUVEZ PAS ACCEDER AU CONTENU DE CETTE PAGE ⚠️ !
                 </h1>
                 <Link className="profil-off-link" to="/">
                   {" "}
@@ -215,7 +164,7 @@ export default function Post() {
         </>
       )}
 
-      {/* FOOTER */}
+      {/* Footer avec le component Footer */}
       <Footer />
     </>
   );

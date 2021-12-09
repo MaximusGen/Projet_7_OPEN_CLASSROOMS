@@ -16,7 +16,7 @@ main {
 
   .profil-header {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
   }
 
@@ -90,6 +90,7 @@ main {
 
     .profil-off-link {
       color: red;
+      font-size: 1.5rem;
     }
 
     .profil-off-link:hover {
@@ -99,11 +100,10 @@ main {
 }
 
 .rounded-img {
-  margin: 10px;
   width: 150px;
   height: 150px;
   border-radius: 50%;
 }
-.form-control {
+.input-image{
   width: auto;
 }

@@ -1,34 +1,56 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-    return (
-        <footer className="bg text-center text-white bg">
-        <div className="container p-4 pb-0">
-            <section className="mb-4">
-            {/* <!-- Facebook --> */}
-                <a className="btn btn-primary btn-floating m-1 bg-fb" href="https://fr-fr.facebook.com/"
-                    role="button"><i class="fab fa-facebook-f"></i></a>
+  return (
+    // Footer pour le site Groupomonia
 
-                {/* <!-- Twitter --> */}
-                <a className="btn btn-primary btn-floating m-1 bg-tw"  href="https://twitter.com/?lang=fr"
-                    role="button"><i class="fab fa-twitter"></i></a>
+    <footer className="bg text-center text-white bg">
+      <div className="container p-4 pb-0">
+        <section className="mb-4">
+          {/* <!-- Facebook --> */}
 
-                {/* <!-- Instagram --> */}
-                <a className="btn btn-primary btn-floating m-1 bg-inst"  href="https://www.instagram.com/?hl=fr"
-                    role="button"><i class="fab fa-instagram"></i></a>
+          <Link
+            to="https://fr-fr.facebook.com"
+            className="btn btn-primary btn-floating m-1 bg-fb"
+          >
+            <i className="fab fa-facebook-f"></i>
+          </Link>
 
-                {/* <!-- Linkedin --> */}
-                <a className="btn btn-primary btn-floating m-1 bg-lkd" href="https://www.linkedin.com/"
-                    role="button"><i class="fab fa-linkedin-in"></i></a>
-            </section>
-        </div>
-        
-        <div className="text-center text-dark p-3">
+          {/* <!-- Twitter --> */}
+
+          <Link
+            to="https://twitter.com/?lang=fr"
+            className="btn btn-primary btn-floating m-1 bg-tw"
+          >
+            <i className="fab fa-twitter"></i>
+          </Link>
+
+          {/* <!-- Instagram --> */}
+
+          <Link
+            to="https://www.instagram.com/?hl=fr"
+            className="btn btn-primary btn-floating m-1 bg-inst"
+          >
+            <i className="fab fa-instagram"></i>
+          </Link>
+
+          {/* <!-- Linkedin --> */}
+
+          <Link
+            to="https://www.linkedin.com/"
+            className="btn btn-primary btn-floating m-1 bg-lkd"
+          >
+            <i className="fab fa-linkedin-in"></i>
+          </Link>
+        </section>
+      </div>
+
+      <div className="text-center text-dark p-3">
         © 2021 Copyright: Groupomonia
-        </div>
-
+      </div>
     </footer>
-    );
+  );
 };
 
 export default Footer;
