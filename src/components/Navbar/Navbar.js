@@ -1,8 +1,10 @@
+// On importe "React" et Link
 import React from 'react'
 import {Link} from 'react-router-dom';
 
 export default function Navbar() {
-
+   
+  // On créer une fonction qui permet à l'utlisateur de se déconnecter en supprimant ce que le localStorage stock
    const handleLogOut = () => {
        localStorage.removeItem('token');
        localStorage.removeItem('userId')

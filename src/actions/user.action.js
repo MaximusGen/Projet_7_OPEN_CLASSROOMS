@@ -3,16 +3,16 @@ import axios from 'axios';
 const token = localStorage.getItem('token');
 
 export const GET_USER = "GET_USER";
-export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
+export const UPDATE_PICTURE = "UPDATE_PICTURE";
+export const UPDATE_BIO = "UPDATE_BIO";
 
 export const getUser = (uid) => {
     return (dispatch) => {
-        return axios
-        .get(`${process.env.REACT_APP_API_URL}api/auth/${uid}`, 
-        {
-            headers: { 'Authorization': 'Bearer ' + token}
-        }
-        )
+        return axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}api/auth/` + uid,
+            headers: { 'Authorization': 'Bearer ' + token},
+        })
         .then((res) =>{
             dispatch({type: GET_USER, payload: res.data})
         })
@@ -21,25 +21,40 @@ export const getUser = (uid) => {
 }
 
 
-export const uploadPicture = (data, id) => {
+export const updatePicture = (data, userId) => {
     return (dispatch) => {
-        return axios
-        .post(`${process.env.REACT_APP_API_URL}api/auth/upload/${id}`,data , 
-        {
-            headers: { 'Authorization': 'Bearer ' + token}
-        }
-        )
+        return axios({
+          method:"put",
+          url: `${process.env.REACT_APP_API_URL}api/auth/` + userId,
+          data:{data},
+          headers: { 'Authorization': 'Bearer ' + token},
+        })
         .then((res) => {
-            return axios
-            .get(`${process.env.REACT_APP_API_URL}api/auth/${id}`,
-            {
+            return axios({
+                method: "get",
+                url:`${process.env.REACT_APP_API_URL}api/auth/` + userId,
                 headers: { 'Authorization': 'Bearer ' + token}
             })
-            .then((res) => {
+            .then(() => {
                 console.log(data);
-                dispatch({ type: UPLOAD_PICTURE, payload: res.data.imageUrl})
+                dispatch({ type: UPDATE_PICTURE, payload: res.data.imageUrl})
             })
         })
         .catch((err) => console.log(err))
     }
+}
+
+export const updateBio = (userId, bio) => {
+   return (dispatch) => {
+       return axios({
+           method:"put",
+           url: `${process.env.REACT_APP_API_URL}api/auth/` + userId,
+           data: {bio},
+           headers: { 'Authorization': 'Bearer ' + token},
+       })
+       .then((res) => {
+           dispatch({ type: UPDATE_BIO, payload: bio})
+       })
+       .catch((err) => console.log(err))      
+   }
 }

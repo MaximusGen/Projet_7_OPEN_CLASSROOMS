@@ -1,18 +1,24 @@
+// On importe "axios", "React" et "useState"
 import React, { useState } from "react";
 import axios from 'axios';
 
 
 export default function ModalRegister() {
+
+  // On créer des useStates pour récuperer les valeurs de email, password, username et bio 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
 
+   // On créer la fonction handleSubmit pour l'inscription de l'utilisateur
   const handleSubmit = (e) => {
+
     e.preventDefault();
     //  const confirmPassword = document.getElementById('confirmPassword')
      const status = document.querySelector('.status');
      
+     // Si username, password et email sont remplis et correct alors on utilise axios pour appeller l'api du backend
      if(username && email && password) {
        axios.post(`${process.env.REACT_APP_API_URL}api/auth/register` , {
          username,
@@ -35,6 +41,8 @@ export default function ModalRegister() {
       })
       .catch((err) => console.log(err))
     } else {
+
+      // Sinon on renvoie une erreur dans la div status
       status.innerHTML = 'Veuillez remplir correctement le formulaire !'
       status.style.color = '#fff'
       status.style.background = 'red'
@@ -50,6 +58,8 @@ export default function ModalRegister() {
 
   return (
     <>
+
+           {/* On créer un formulaire pour se connecter */}    
            <form action="" onSubmit={handleSubmit}>
         <div className="md-form mb-0">
           <label htmlFor="username" id="username-label" className="fs-4 texte-dark">

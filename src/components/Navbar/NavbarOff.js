@@ -1,3 +1,4 @@
+// On importe "React" et Link
 import React from 'react'
 import { Link } from 'react-router-dom'
 

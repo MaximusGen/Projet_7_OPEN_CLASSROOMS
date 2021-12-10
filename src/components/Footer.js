@@ -1,3 +1,4 @@
+// On importe "React" et Link
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -46,7 +47,7 @@ const Footer = () => {
         </section>
       </div>
 
-      <div className="text-center text-dark p-3">
+      <div className="text-center text-dark fs-5 p-3">
         © 2021 Copyright: Groupomonia
       </div>
     </footer>

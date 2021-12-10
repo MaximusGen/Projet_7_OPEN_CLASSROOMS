@@ -1,3 +1,4 @@
+// On importe "React"
 import React from 'react'
 
 // On importe les composants de react-router-dom
@@ -11,8 +12,7 @@ import Post from '../../pages/Post';
 
 export default function index() {
     return (
-      // On déclare nos routes pour le site 
-
+      // On déclare nos routes pour le site
         <Router> 
         <Routes>
           <Route path="/" element={<Home />} />

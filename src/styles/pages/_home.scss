@@ -9,6 +9,18 @@ nav ul {
   cursor: pointer;
 }
 
+.active-btn {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 25px;
+  padding: 5px
+}
+/*********** Main **************/
+
+#main {
+  height: 1000px
+}
 
 .image-bg {
   background-image: url(../img/bg-home.jpg);
@@ -19,11 +31,18 @@ nav ul {
 }
 
 .text-size-h1 {
-  font-size: 3rem;
+  font-size: 4rem;
+  letter-spacing: 2px;
+  text-shadow:  0 0 7px #fff, 
+               0 0 10px #fff, 
+               0 0 42px $background-primary,   
+               0 0 77px $background-primary, 
+               0 0 100px $background-primary
 }
 
 .text-size-h5 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: rgb(252, 26, 26);
 }
 
 // FORM CONTAINER
@@ -37,27 +56,7 @@ nav ul {
 }
 
 
-.active-btn {
-  border-bottom: 1px solid #000;
-}
 
-// FOOTER
 
-.bg-fb {
-  background-color: #3b5998;
-}
-.bg-tw {
-  background-color: #55acee;
-}
-.bg-inst {
-  background-color: #ac2bac;
-}
-.bg-lkd {
-  background-color: #0082ca;
-}
 
-@media (min-width: 992px) {
-  #intro-example {
-    height: 1000px;
-  }
-}
+

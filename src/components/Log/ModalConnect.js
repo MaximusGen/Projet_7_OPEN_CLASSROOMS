@@ -1,13 +1,19 @@
+// On importe "axios", "React" et "useState"
 import axios from "axios";
 import React, { useState } from "react";
 
 export default function ModalConnect() {
+
+  // On créer des useStates pour récuperer les valeurs de email et password 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  // On créer la fonction handleSubmit pour que l'utilisateur se connecte
   const handleSubmit = (e) => {
     e.preventDefault();
-
+     
+    // Si email et password sont remplie et correct alors on appelle axios pour post avec l'api du backend
     if(email && password) {
       axios.post(`${process.env.REACT_APP_API_URL}api/auth/login`, {
         email,
@@ -19,12 +25,26 @@ export default function ModalConnect() {
         localStorage.setItem("userId", res.data.userId);
         window.location = "/profile"
       })
-      .catch((res) => console.log(res.data))
+      .catch(() =>{
+        const status = document.querySelector('.status');
+
+        // Sinon on renvoie une erreur dans la div status
+        status.innerHTML = 'Veuillez remplir correctement le formulaire !'
+        status.style.color = '#fff'
+        status.style.background = 'red'
+        status.style.padding = '10px'
+
+        setTimeout(() => {
+          status.style.opacity = '0'
+        }, 5000)
+      })
     }
     
   };
   return (
     <>
+       {/* On créer un formulaire pour se connecter */}
+       
       <form action="" onSubmit={handleSubmit}>
         <div className="md-form mb-0">
           <label htmlFor="email" id="email-error" className="fs-4 texte-dark">
