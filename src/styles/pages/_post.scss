@@ -2,6 +2,15 @@
     background: url(../img/bank.jpg);
     background-size: cover;
 }
+ .post-header p {
+   margin-top:5px;
+   margin-bottom: 0;
+ }
+ .post-header h4 {
+   color: #000;
+   font-size: 1.7rem
+ }
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -11,7 +20,7 @@
   
   .flex {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
   }
 
@@ -34,4 +43,28 @@
   
   .flex-comment h5 {
     margin-left: 15px;
+  }
+
+  .img-post {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .img-sendPost{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin-top:5px;
+      margin-bottom: 0;
+    }
   }

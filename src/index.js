@@ -7,11 +7,14 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers'
 import App from './App';
 import './styles/index.scss';
+import {getUsers} from './actions/users.action'
 
 
 const store = createStore(
   rootReducer, composeWithDevTools(applyMiddleware(thunk)),
 )
+
+store.dispatch(getUsers())
 
 ReactDOM.render(
    <Provider store={store}>
