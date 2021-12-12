@@ -63,7 +63,7 @@ export default function PostBox() {
                     }
                     alt=""
                   />
-                  <h4 className="post-username m-2">
+                  <h4 className="post-username m-2" style={{color:"#000", fontSize:"1.7rem"}}>
                     {!isEmpty(usersData[0]) &&
                       usersData.map((user) => {
                         if (user.id === post.UserId) {
@@ -71,7 +71,7 @@ export default function PostBox() {
                         }
                       })}{" "}
                   </h4>
-                  <p>
+                  <p style={{marginBottom:"0", marginTop:"5px"}}>
                     {dateParser(post.updatedAt)}{" "}
                     <span onClick={handleDelete}>
                       <i class="fa fa-trash" id="deleteIcon" aria-hidden="true"></i>
@@ -86,7 +86,7 @@ export default function PostBox() {
                     alt=""
                     width="100%"
                   />
-                  <div className="post-footer flex-like">
+                  <div className="post-footer">
                     <p>
                       Commentaires <i class="far fa-comments"></i>
                     </p>

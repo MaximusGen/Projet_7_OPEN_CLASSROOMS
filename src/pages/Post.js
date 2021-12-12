@@ -25,16 +25,16 @@ export default function Post() {
 
           {/* Main si l'utilisateur est connecté : */}
 
-          <div className="main">
+          <main className="main-post">
             <div className="container">
-              <div className="row flex-center">
+              <div className="row">
                 <div className="col-md-8 m-4">
                   <SendPostBox />
                   <PostBox/>
                 </div>
               </div>
             </div>
-          </div>
+          </main>
         </>
       ) : (
         <>
@@ -45,8 +45,8 @@ export default function Post() {
           </header>
 
           {/* Main si l'utilisateur n'est pas connecté : */}
-
-          <div className="main">
+          
+          <main className="main-post">
             <div className="profil-off">
               <div className="content-profil-off">
                 <h1 className="text-center">
@@ -58,7 +58,7 @@ export default function Post() {
                 </Link>
               </div>
             </div>
-          </div>
+          </main>
         </>
       )}
 

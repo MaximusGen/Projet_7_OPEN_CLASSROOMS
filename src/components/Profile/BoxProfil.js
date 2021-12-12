@@ -28,7 +28,7 @@ export default function BoxProfil() {
     }
    
     return (
-        <div className="profil-container bg-light shadow-5">
+        <div className="profil-container" style={{backgroundColor:"#fff"}}>
         <div className="profil-header border-bottom m-3">
           <img
             className=" rounded-img m-3"
@@ -41,7 +41,7 @@ export default function BoxProfil() {
           </button>
         </div>
         <div className="profil-main border-bottom m-3">
-          <ImageProfile />
+           <ImageProfile />
            <BioProfile />
         </div>
         <div className="profil-footer m-3">

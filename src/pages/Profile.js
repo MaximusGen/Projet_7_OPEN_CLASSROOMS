@@ -30,7 +30,7 @@ export default function Profile() {
 
           {/* Main si l'utilisateur est connecté : */}
 
-          <main>
+          <main id="main-profile">
             <div className="container">
               <div className="row">
                 <div className="col_8_md">
@@ -52,13 +52,13 @@ export default function Profile() {
 
           {/* Main si l'utilisateur n'est pas connecté : */}
 
-          <main>
+          <main id="main-profile">
             <div className="profil-off">
               <div className="content-profil-off">
-                <h1 className="text-center">
+                <h1 className="text-center" style={{color:"#000", fontSize:"2.3rem"}}>
                   VOUS NE POUVEZ PAS ACCEDER AU CONTENUE CETTE PAGE ⚠️ !
                 </h1>
-                <Link className="profil-off-link" to="/">
+                <Link style={{color:"red", fontSize:"1.5rem"}} to="/">
                   {" "}
                   Veuillez vous connectez sur la page d'Acceuil 🏠 !{" "}
                 </Link>

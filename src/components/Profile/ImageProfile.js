@@ -32,7 +32,8 @@ export default function ImageProfile() {
       </label>
       <input
         type="file"
-        className="form-control input-image"
+        className="form-control"
+        style={{width:"auto"}}
         id="image"
         name="image"
         accept=".jpg, .jpeg, .png, .gif"

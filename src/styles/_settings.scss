@@ -1,4 +1,5 @@
 $background-primary: #f1dfd1;
+$box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
 
 * {
   margin: 0;
@@ -18,4 +19,23 @@ a {
 
 .bg {
   background-color: $background-primary;
+}
+
+@mixin flex($flex, $justify, $align) {
+  display: $flex;
+  justify-content:$justify;
+  align-items:$align;
+}
+
+@mixin flex-direction($flex, $justify, $align, $direction) {
+  display: $flex;
+  justify-content:$justify;
+  align-items:$align;
+  flex-direction: $direction;
+}
+
+@mixin image-rounded($width, $height, $radius) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
 }

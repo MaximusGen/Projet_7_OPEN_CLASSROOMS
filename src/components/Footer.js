@@ -14,6 +14,7 @@ const Footer = () => {
           <Link
             to="https://fr-fr.facebook.com"
             className="btn btn-primary btn-floating m-1 bg-fb"
+            style={{backgroundColor:"#3b5998"}}
           >
             <i className="fab fa-facebook-f"></i>
           </Link>
@@ -23,6 +24,7 @@ const Footer = () => {
           <Link
             to="https://twitter.com/?lang=fr"
             className="btn btn-primary btn-floating m-1 bg-tw"
+            style={{backgroundColor:"#55acee"}}
           >
             <i className="fab fa-twitter"></i>
           </Link>
@@ -32,6 +34,7 @@ const Footer = () => {
           <Link
             to="https://www.instagram.com/?hl=fr"
             className="btn btn-primary btn-floating m-1 bg-inst"
+            style={{backgroundColor:"#ac2bac"}}
           >
             <i className="fab fa-instagram"></i>
           </Link>
@@ -41,6 +44,7 @@ const Footer = () => {
           <Link
             to="https://www.linkedin.com/"
             className="btn btn-primary btn-floating m-1 bg-lkd"
+            style={{backgroundColor:"#0082ca"}}
           >
             <i className="fab fa-linkedin-in"></i>
           </Link>

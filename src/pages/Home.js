@@ -78,12 +78,12 @@ export default function Home() {
 
           {/* Main avec la présentation du site et les modals de connection et inscription */}
 
-          <div id="main" className="p-5 text-center bg-image image-bg">
+          <div id="main-home" className="p-5 text-center bg-image">
             <div className="mask bg-mask">
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="text-white">
                   <h1 className="text-size-h1">Groupomana Social</h1>
-                  <p className="text-size-h5">
+                  <p className="text-danger fs-4">
                     En cours de développement ... 🚧  !
                   </p>
                   <div className="connection-form">

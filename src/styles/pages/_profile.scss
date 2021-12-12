@@ -1,53 +1,40 @@
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#main-profile {
+  @include flex(flex, center, center);
   background: url(../img/bank2.jpg);
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .profil-container {
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 15px;
+  margin: 1.5rem;
   border: 1px solid #f1f1ff;
-  border-radius: 20px;
-
+  box-shadow: $box-shadow;
+  border-radius: 25px;
+  
   .profil-header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    .rounded-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
   }
-
+  
   .profil-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    @include flex-direction(flex, center, center, column);
 
-    .profil-main-img {
+    .profil-main-img, .profil-main-edit {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      @include flex-direction(flex, center, center, column);
     }
 
     .post-main-bio {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      @include flex-direction(flex, center, center, column);
       margin: 20px;
-    }
-
-    .profil-main-edit {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
     }
 
     .profil-main-edit textarea {
@@ -61,49 +48,9 @@ main {
     }
   }
   .profil-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(flex, space-between, center)
   }
 }
 
-.profil-off {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 1000px;
 
-  .content-profil-off {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #fff;
-    box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
-    border-radius: 20px;
-    padding: 5rem;
 
-    h1 {
-      color: #000;
-      font-size: 2.3rem;
-    }
-
-    .profil-off-link {
-      color: red;
-      font-size: 1.5rem;
-    }
-
-    .profil-off-link:hover {
-      color: #000;
-    }
-  }
-}
-
-.rounded-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-}
-.input-image{
-  width: auto;
-}

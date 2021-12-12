@@ -1,0 +1,12 @@
+.profil-off {
+    @include flex(flex, center, center);
+    height: 1000px;
+  
+    .content-profil-off {
+      @include flex-direction(flex, center, center, column);
+      background-color: #fff;
+      box-shadow: $box-shadow;
+      border-radius: 20px;
+      padding: 5rem;
+    }
+  }
