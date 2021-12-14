@@ -21,7 +21,7 @@ export default function ImageProfile() {
     const data = new FormData();
     // data.append("name", userData.username);
     // data.append("userId", userData.id);
-    data.append("image", image)
+    data.append("file", image[0])
 
     dispatch(updatePicture(data, userData.id))
     dispatch(getUser(userData.id))

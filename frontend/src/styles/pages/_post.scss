@@ -5,22 +5,58 @@
 
 .row {
   @include flex-direction(flex, center, center, column);
-  
-  form {
-    @include flex-direction(flex, center, center, column);
-    
-    .post-text {
-      @include  flex-direction(flex, center, center,column);
+}
+
+.send-post-container{
+  @include flex-direction(flex, center, center, column);
+
+  .send-post-header {
+    @include flex(flex, space-around, center);
+
+    .img-sendPost{
+      @include image-rounded(100px,100px,50%);
     }
   }
+
+  .send-post-main{
+    @include flex-direction(flex, center, center, column);
+  }
+  .send-post-footer {
+    @include flex(flex, space-around, none);
+    width: 100%;
+    margin: 0 auto;
+   .image-upload {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    img {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      transform: translate(-18px, -1px);
+    }
+    input {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      transform: translate(-5px, 11px);
+      opacity: 0;
+      cursor: pointer;
+
+      &::-webkit-file-upload-button {
+        cursor: pointer;
+      }
+    }
+   }
+  }
+
+}
+  
   
   .post-header {
     @include flex(flex, space-around, center);
     
-    .img-sendPost{
-      @include image-rounded(80px,80px,50%);
-    }
-
     .img-post {
       @include image-rounded(50px,50px,50%);
     }
@@ -49,7 +85,7 @@
       margin-bottom: 0;
     }
   }
-}
+  
 
   
 

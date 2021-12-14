@@ -25,24 +25,17 @@ export const updatePicture = (data, userId) => {
     return axios({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/auth/` + userId,
-      data: data,
+      data: {data},
       headers: {
          Authorization: "Bearer " + token,
-        'Content-Type': 'multipart/form-data',
       },
     })
       .then((res) => {
-        return axios({
-          method: "get",
-          url: `${process.env.REACT_APP_API_URL}api/auth/` + userId,
-          headers: { Authorization: "Bearer " + token },
-        }).then(() => {
           console.log(data);
           dispatch({ type: UPDATE_PICTURE, payload: res.data.imageUrl });
-        });
-      })
+        })
       .catch((err) => console.log(err));
-  };
+  }
 };
 
 export const updateBio = (userId, bio) => {

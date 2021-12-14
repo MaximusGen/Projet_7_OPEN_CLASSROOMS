@@ -24,7 +24,7 @@ export default function PostBox({post}) {
   }
 
   const handleDelete = () => {
-    if(window.confirm('Are you sure you want to delete')){
+    if(window.confirm('Vous êtes sur de vouloir supprimer ce message ?')){
        dispatch(deletePost(post.id))
     }
   };
@@ -32,7 +32,7 @@ export default function PostBox({post}) {
 
   return (
             <><div className="post-container border border-dark bg-light p-4 m-5">
-                <div className="post-header flex border-bottom">
+                <div className="post-header border-bottom">
                   <img
                     className="img-post m-3"
                     src={

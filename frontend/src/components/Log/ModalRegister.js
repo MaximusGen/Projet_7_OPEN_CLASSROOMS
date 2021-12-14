@@ -11,6 +11,55 @@ export default function ModalRegister() {
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
 
+
+  const isEmail = () => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const emailError = document.getElementById('email-label');
+  
+  
+    if(email.match(emailRegex)) {
+      emailError.innerHTML ="✔️ E-mail:"
+      emailError.style.color ="#000"
+      return true;
+    } else {
+      emailError.innerHTML = "Votre e-mail est incorrect ! ⚠️"
+      emailError.classList.remove("texte-dark")
+      emailError.style.color = "#b31b1b";
+      return false
+    }
+  }
+
+  const isPassword = () => {
+    const passwordRegex = /^(?=.*\d).{4,8}$/;
+    const passwordError = document.getElementById('password-label');
+
+      if(password.match(passwordRegex)) {
+        passwordError.innerHTML =" ✔️ Mot de passe:"
+        passwordError.style.color ="#000"
+        return true;
+      } else {
+        passwordError.innerHTML = "Votre password est incorrect ! ⚠️"
+        passwordError.classList.remove("texte-dark")
+        passwordError.style.color = "#b31b1b";
+        return false
+      }
+   }
+
+  const isUsername = () => {
+    const usernameError = document.getElementById('username-label');
+
+      if(username) {
+        usernameError.innerHTML =" ✔️ Nom/Prénom:"
+        usernameError.style.color ="#000"
+        return true;
+      } else {
+        usernameError.innerHTML = "Votre pseudo est incorrect ! ⚠️"
+        usernameError.classList.remove("texte-dark")
+        usernameError.style.color = "#b31b1b";
+        return false
+      }
+   }
+
    // On créer la fonction handleSubmit pour l'inscription de l'utilisateur
   const handleSubmit = (e) => {
 
@@ -19,9 +68,9 @@ export default function ModalRegister() {
      const status = document.querySelector('.status');
      
      // Si username, password et email sont remplis et correct alors on utilise axios pour appeller l'api du backend
-     if(username && email && password) {
+     if(isUsername() && isEmail() && isPassword()) {
        axios.post(`${process.env.REACT_APP_API_URL}api/auth/register` , {
-         username,
+        username,
         email,
         password,
         bio
@@ -41,7 +90,9 @@ export default function ModalRegister() {
       })
       .catch((err) => console.log(err))
     } else {
-
+      isEmail(null)
+      isPassword(null)
+      isUsername(null)
       // Sinon on renvoie une erreur dans la div status
       status.innerHTML = 'Veuillez remplir correctement le formulaire !'
       status.style.color = '#fff'
@@ -72,7 +123,7 @@ export default function ModalRegister() {
             className="form-control fs-4"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
+            
           />
 
           <label htmlFor="email" id="email-label" className="fs-4 texte-dark">
@@ -85,7 +136,7 @@ export default function ModalRegister() {
             className="form-control fs-4"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            
           />
 
           <label htmlFor="password" id="password-label" className="fs-4 texte-dark">
@@ -98,7 +149,7 @@ export default function ModalRegister() {
             className="form-control fs-4"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            
           />
 
           {/* <label htmlFor="confirmPassword" className="fs-4 texte-dark">
@@ -109,7 +160,7 @@ export default function ModalRegister() {
             id="confirmPassword"
             name="confirmPassword"
             className="form-control fs-4"
-            required
+            
           />
            */}
           <label htmlFor="bio" className="fs-4 texte-dark">
