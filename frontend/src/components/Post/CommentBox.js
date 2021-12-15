@@ -1,75 +1,112 @@
-// import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getComments } from "../../actions/comment.action";
-// import { isEmpty } from "../../utils/Utils";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateComment,
+  deleteComment,
+} from "../../actions/comment.action";
+import { isEmpty, timestampParser } from "../../utils/Utils";
 
-export default function CommentBox({ post }) {
-//   const dispatch = useDispatch();
-//   const commentData = useSelector((state) => state.commentReducer);
-//   const userData = useSelector((state) => state.userReducer);
-//   const usersData = useSelector((state) => state.usersReducer);
-//   const [loadComment, setLoadComment] = useState(true);
+export default function CommentBox({ post, comment }) {
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userReducer);
+  const usersData = useSelector((state) => state.usersReducer);
+  const [isUpdatedComment, setIsUpdatedComment] = useState(false);
+  const [textUpdate, setTextUpdate] = useState(null);
 
-//   useEffect(() => {
-//     if (loadComment) {
-//       dispatch(getComments());
-//       setLoadComment(false);
-//     }
-//   }, [loadComment, dispatch]);
+  const updateCommentText = (e) => {
+    if (textUpdate) {
+      dispatch(updateComment(comment.id, textUpdate));
+    }
+    setIsUpdatedComment(false);
+  };
 
-  return 
-    // <div className="post-comments">
-    //   {!isEmpty(commentData[0]) &&
-    //     commentData.map((comment) => {
-    //       if (post.id === comment.ArticleId) {
-    //         return (
-    //           <div className="content-comments" key={comment.comment.id}>
-    //             <div className="post-comments-header">
-    //               <div className="post-header-user">
-    //                 <img
-    //                   src={
-    //                     !isEmpty(usersData[0]) &&
-    //                     usersData.map((user) => {
-    //                       if (user.id === comment.UserId) {
-    //                         return user.imageUrl;
-    //                       }
-    //                     })
-    //                   }
-    //                   alt=""
-    //                 />
-    //                 <h5>
-    //                   {!isEmpty(usersData[0]) &&
-    //                     usersData.map((user) => {
-    //                       if (user.id === comment.UserId) {
-    //                         return user.username;
-    //                       }
-    //                     })}
-    //                 </h5>
-    //               </div>
-    //               <p>
-    //                 {!isEmpty(usersData[0]) &&
-    //                   usersData.map((user) => {
-    //                     if (user.isAdmin === "1") {
-    //                       return (
-    //                         <span>
-    //                           <i
-    //                             class="fa fa-trash"
-    //                             id="deleteIcon"
-    //                             aria-hidden="true"
-    //                           ></i>
-    //                         </span>
-    //                       );
-    //                     }
-    //                   })}
-    //               </p>
-    //             </div>
-    //             <div className="post-comments-main">
-    //               <p>{comment.text}</p>
-    //             </div>
-    //           </div>
-    //         );
-    //       }
-    //     })}
-    // </div>
-  
+  const handleDelete = (e) => {
+    e.preventDefault();
+    if (window.confirm("Vous êtes sur de vouloir supprimer ce commentaire ?")) {
+      dispatch(deleteComment(comment.id));
+    }
+  }
+
+  return (
+    <>
+      <div className="post-comment mt-3" key="{comment.id}">
+        <div className="post-comment-header flex-comment">
+          <div className="comment-header-user">
+            <img
+              src={
+                !isEmpty(usersData[0]) &&
+                usersData
+                  .map((user) => {
+                    if (user.id === comment.UserId) {
+                      return user.imageUrl;
+                    } else return null;
+                  })
+                  .join("")
+              }
+              alt=""
+              className="profile-photo-sm"
+            />
+            <h5>
+              {!isEmpty(usersData[0]) &&
+                usersData.map((user) => {
+                  if (user.id === comment.UserId) {
+                    return user.username;
+                  } else return null;
+                })}
+            </h5>
+          </div>
+          <div className="comment-header-info">
+            <p>
+              {timestampParser(comment.updatedAt)}
+              {userData.isAdmin === "1" && (
+                <button onClick={handleDelete}>
+                  <i
+                    className="fa fa-trash"
+                    id="deleteIcon"
+                    aria-hidden="true"
+                  ></i>
+                </button>
+              )}
+              {userData.id === comment.UserId && (
+                <>
+                  <button
+                    onClick={() => setIsUpdatedComment(!isUpdatedComment)}
+                  >
+                    <i className="fas fa-edit"></i>
+                  </button>
+                  <button onClick={handleDelete}>
+                    <i
+                      className="fa fa-trash"
+                      id="deleteIcon"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                </>
+              )}
+            </p>
+          </div>
+        </div>
+        <div className="post-comment-text mt-2">
+          {isUpdatedComment === false && <p>{comment.text}</p>}
+          {isUpdatedComment && (
+            <div className="edit-post">
+              <textarea
+                defaultValue={comment.text}
+                onChange={(e) => setTextUpdate(e.target.value)}
+                name="text"
+                id="text"
+                cols="30"
+                className="form-control"
+                rows="2"
+              ></textarea>
+              <br />
+              <button className="btn btn-primary" onClick={updateCommentText}>
+                Validez votre modification
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
 }

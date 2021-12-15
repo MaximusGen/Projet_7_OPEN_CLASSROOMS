@@ -11,7 +11,7 @@ const fs = require("fs");
 const models = require("../models");
 const User = models.User;
 const Article = models.Article;
-const Comment = models.comments;
+const Comment = models.Comment;
 const Like = models.LikeDislike;
 
 // On créé une constante pour verifiez si l'email et le password est bien écrit grâce à un Regex
@@ -144,7 +144,6 @@ exports.modifyUser = (req, res, next) => {
   })
     .then((userFound) => {
       if (userFound) {
-        console.log(userFound);
         const newData = {
           bio: bio ? bio : userFound.bio,
         };

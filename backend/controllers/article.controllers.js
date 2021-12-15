@@ -6,7 +6,7 @@ const { error } = require("console");
 const models = require("../models");
 const Article = models.Article;
 const User = models.User;
-const Comment = models.comments;
+const Comment = models.Comment;
 const Like = models.LikeDislike;
 
 

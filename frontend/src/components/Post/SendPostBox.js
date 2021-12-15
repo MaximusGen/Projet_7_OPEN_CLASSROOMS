@@ -8,21 +8,17 @@ export default function SendPostBox() {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const [image, setImage] = useState();
+  const [postPicture, setPostPicture] = useState(null)
 
-  const cancelPost = () => {
-    setText("");
-    setImage("");
-  };
-
-
+  
+  
   const handlePost = async () => {
-
-    if (text) {
+    
+    if (text || postPicture) {
       const data = new FormData();
-
-      data.append("name", userData.username);
-      data.append("userId", userData.id);
-      data.append("file", image);
+      
+      data.append("filename", userData.username);
+       if(image) data.append("file", image);
 
       await dispatch(createPost(image, text));
       dispatch(getPosts());
@@ -31,7 +27,17 @@ export default function SendPostBox() {
       alert("Veuillez entrer un message");
     }
   };
+  
+  const cancelPost = () => {
+    setText("");
+    setPostPicture("")
+    setImage("");
+  };
 
+  const handlePicture = (e) => {
+    setPostPicture(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
+  }
   return (
     <>
       <div
@@ -60,7 +66,7 @@ export default function SendPostBox() {
             value={text}
             onChange={(e) => setText(e.target.value)}
           ></textarea>
-          {text || image ?(
+          {text || postPicture ?(
             <div className="post-container mt-3" style={{border: "1px solid #000", padding: "10px", width:"100%"}}>
                <div className="post-header border-bottom">
                  <img className="img-post m-3" src={userData.imageUrl} alt="" />
@@ -68,7 +74,7 @@ export default function SendPostBox() {
                  <p  style={{ marginBottom: "0", marginTop: "5px" }}>{timestampParser(Date.now())}</p>
                </div>
                <p className="fs-4">{text}</p>
-               <img src={image} alt="" />
+               <img src={postPicture} alt="" />
             </div>
           ) : null}
         </div>
@@ -80,10 +86,10 @@ export default function SendPostBox() {
               id="image"
               name="image"
               accept=".jpg, .jpeg, .png, .gif"
-              onChange={(e) => setImage(e.target.value)}
+              onChange={(e) => handlePicture(e)}
             />
           </div>
-          {text || image ? (
+          {text || postPicture ? (
             <button
               className="btn btn-danger btn-rounded btn-lg"
               onClick={cancelPost}

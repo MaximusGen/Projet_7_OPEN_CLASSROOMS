@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 
 // On importe la logique de uploadPicture dans le fichier user.action
-import { updatePicture ,getUser } from "../../actions/user.action";
+import { updatePicture, getUser } from "../../actions/user.action";
 
 export default function ImageProfile() {
 
@@ -19,9 +19,8 @@ export default function ImageProfile() {
     e.preventDefault();
     console.log(image);
     const data = new FormData();
-    // data.append("name", userData.username);
-    // data.append("userId", userData.id);
-    data.append("file", image[0])
+    data.append("filename", userData.id);
+    data.append("image", image)
 
     dispatch(updatePicture(data, userData.id))
     dispatch(getUser(userData.id))

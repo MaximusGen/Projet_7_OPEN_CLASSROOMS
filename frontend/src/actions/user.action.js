@@ -22,14 +22,14 @@ export const getUser = (uid) => {
 
 export const updatePicture = (data, userId) => {
   return (dispatch) => {
-    return axios({
-      method: "put",
-      url: `${process.env.REACT_APP_API_URL}api/auth/` + userId,
-      data: {data},
-      headers: {
-         Authorization: "Bearer " + token,
-      },
+    return axios.put(`${process.env.REACT_APP_API_URL}api/auth/${userId}`, data, {
+      headers: { Authorization: "Bearer " + token}
     })
+    // .then(() =>  {
+    //   return axios.get(`${process.env.REACT_APP_API_URL}api/auth/${userId}`, {
+    //     headers: { Authorization: "Bearer " + token }
+    //   })
+    // })
       .then((res) => {
           console.log(data);
           dispatch({ type: UPDATE_PICTURE, payload: res.data.imageUrl });

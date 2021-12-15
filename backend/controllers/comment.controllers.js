@@ -3,7 +3,7 @@ const utils = require("../utils/jwtUtils");
 
 // On importe les bases de données
 const models = require("../models");
-const Comment = models.comments;
+const Comment = models.Comment;
 const User = models.User;
 const Article = models.Article;
 
@@ -123,7 +123,7 @@ module.exports.deleteComment = (req, res, next) => {
 module.exports.getComments = (req, res, next) => {
   Comment.findAll()
     .then((comment) => {
-      res.status(200).json({ comment });
+      res.status(200).json(comment);
     })
     .catch((err) => {
       res.status(400).json({ err: "Article not found ! " + err });
