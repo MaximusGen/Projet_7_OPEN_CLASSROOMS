@@ -7,17 +7,14 @@ const models = require("../models");
 const Article = models.Article;
 const User = models.User;
 const Comment = models.Comment;
-const Like = models.LikeDislike;
+const Like = models.Like;
 
 
 // On exporte la logique CreateArticle pour crée un article
 
 module.exports.createArticle = (req, res, next) => {
-  let text = req.body.text;
   let userId = utils.getUserId(req.headers.authorization);
-  if (text.length <= 2) {
-    return res.status(400).json({ message: "Text must have length 3-250" });
-  }
+
 
   let image;
 

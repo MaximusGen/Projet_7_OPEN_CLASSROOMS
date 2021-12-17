@@ -28,8 +28,7 @@ router.delete("/:id", auth, articleCtrl.deleteArticle);
 // Routes pour like ou dislike un article 
 
 router.post("/likes/:id", auth, likeCrtrl.like)
-router.post("/dislikes/:id", auth, likeCrtrl.dislike)
-router.get("/likecount/:id", auth, likeCrtrl.countLikeByArticleId)
-router.post('/likeOrDislike/:id', auth, likeCrtrl.likeOrDislike)
+router.get("/likes/:id", auth, likeCrtrl.countLikeByArticleId)
+// router.post('/likeOrDislike/:id', auth, likeCrtrl.likeOrDislike)
 
 module.exports = router;

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useContext  } from "react";
+import { useSelector } from "react-redux";
 
 // On importe Link pour remplacer la balise <a>
 import { Link } from "react-router-dom";
@@ -12,21 +12,12 @@ import PostBox from "../components/Post/PostBox";
 import SendPostBox from "../components/Post/SendPostBox";
 import { isEmpty } from "../utils/Utils";
 import { UidContext } from "../components/AppContext";
-import { getPosts } from "../actions/post.action";
 
 export default function Post() {
   const uid = useContext(UidContext);
 
-  const [loadPost, setLoadPost] = useState(true);
-  const dispatch = useDispatch();
   const postData = useSelector((state) => state.postReducer);
 
-  useEffect(() => {
-    if (loadPost) {
-      dispatch(getPosts());
-      setLoadPost(false);
-    }
-  }, [loadPost, dispatch]);
 
 
   return (

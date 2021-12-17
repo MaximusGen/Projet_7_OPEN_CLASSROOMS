@@ -15,11 +15,11 @@ export default function ImageProfile() {
   const userData = useSelector((state) => state.userReducer)
 
   // On crée  la fonction handlePicture pour modifier l'image de profile 
-  const handlePicture = (e) => {
-    e.preventDefault();
+  const handlePicture = () => {
     console.log(image);
     const data = new FormData();
-    data.append("filename", userData.id);
+    // data.append("filename", userData.id);
+    // data.append("bio", "Coucou je suis bio")
     data.append("image", image)
 
     dispatch(updatePicture(data, userData.id))
@@ -38,7 +38,7 @@ export default function ImageProfile() {
         id="image"
         name="image"
         accept=".jpg, .jpeg, .png, .gif"
-        onChange={(e) => setImage(e.target.value)}
+        onChange={(e) => {console.log(e.target.files[0]); setImage(e.target.files[0])}}
       />
       <button
         type="submit"

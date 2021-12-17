@@ -7,6 +7,7 @@ export const CREATE_POST = " CREATE_POST"
 export const UPDATE_POST = "UPDATE_POST"
 export const DELETE_POST = " DELETE_POST"
 
+
 export const getPosts = () => {
     return (dispatch) => {
         return axios ({
@@ -21,12 +22,13 @@ export const getPosts = () => {
     }
 }
 
-export const createPost = (image,text) => {
+export const createPost = (data) => {
+    console.log(data);
     return (dispatch) => {
         return axios ({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/article`,
-            data:{image,text },
+            data:{data},
             headers : { 'Authorization': 'Bearer ' + token}
         })
         .then(() => {
@@ -63,3 +65,4 @@ export const deletePost = (articleId) => {
         .catch((err) => console.log(err))
     }
 }
+

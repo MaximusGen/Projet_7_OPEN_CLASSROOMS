@@ -56,8 +56,8 @@ export default function CommentBox({ post, comment }) {
             </h5>
           </div>
           <div className="comment-header-info">
-            <p>
-              {timestampParser(comment.updatedAt)}
+            <p>Publié le: &nbsp;
+              {timestampParser(comment.createdAt)}
               {userData.isAdmin === "1" && (
                 <button onClick={handleDelete}>
                   <i

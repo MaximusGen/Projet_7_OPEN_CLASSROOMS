@@ -3,16 +3,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { updatePost, deletePost } from "../../actions/post.action";
 import { isEmpty, dateParser } from "../../utils/Utils";
 import Comment from "./Comment";
+import { addLikes, getLikes } from '../../actions/like.action';
+import { getComments, addComment } from "../../actions/comment.action";
 
 export default function PostBox({ post }) {
   const [showComment, setShowComment] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
-
+  const [textComment, setTextComment] = useState("");
+  
   const dispatch = useDispatch();
-
+  
+  const likeData = useSelector(state => state.likeReducer)
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
+  const commentData = useSelector((state) => state.commentReducer)
+  
+
+  const handleComment = async (e) => {
+    e.preventDefault();
+
+    if (textComment) {
+      await dispatch(addComment(post.id, textComment));
+      dispatch(getComments());
+      setShowComment(true);
+      setTextComment("")
+    } else {
+      alert("Veuillez remplir le formulaire");
+    }
+  };
+
+  const addLike = () => {
+    dispatch(addLikes(post.id));
+    dispatch(getLikes(post.id));
+  }
 
   const updatePostText = () => {
     if (textUpdate) {
@@ -57,7 +81,8 @@ export default function PostBox({ post }) {
               })}{" "}
           </h4>
           <p style={{ marginBottom: "0", marginTop: "5px" }}>
-            {dateParser(post.updatedAt)}
+            Publié le: &nbsp;
+            {dateParser(post.createdAt)}
             {userData.isAdmin === "1" && (
               <button onClick={handleDelete}>
                 <i
@@ -108,14 +133,30 @@ export default function PostBox({ post }) {
             onClick={() => setShowComment(!showComment)}
             style={{ cursor: "pointer" }}
           >
-            Commentaires <i className="far fa-comments"></i>
+            Commentaires <i className="far fa-comments">{commentData.ArticleId === post.id}</i>
           </p>
           <div>
-            <i className="far fa-thumbs-up m-4">5</i>
-            <i className="far fa-thumbs-down m-4">10</i>
+          <i onClick={addLike} className="far fa-thumbs-up m-4">{likeData.count}</i>
           </div>
         </div>
         {showComment && <Comment post={post} />}
+        <div className="comment-send">
+        <form action="" className="form-3" onSubmit={handleComment}>
+          <label className="" htmlFor="text">
+            Votre commentaire:
+          </label>
+          <input
+            type="text"
+            id="text"
+            className="form-control"
+            value={textComment}
+            onChange={(e) => setTextComment(e.target.value)}
+          />
+          <button className="btn btn-dark mb-3 btn-rounded" type="submit">
+            Envoyez
+          </button>
+        </form>
+      </div>
       </div>
     </>
   );

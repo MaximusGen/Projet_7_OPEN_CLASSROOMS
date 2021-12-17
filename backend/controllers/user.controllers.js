@@ -12,7 +12,7 @@ const models = require("../models");
 const User = models.User;
 const Article = models.Article;
 const Comment = models.Comment;
-const Like = models.LikeDislike;
+const Like = models.Like;
 
 // On créé une constante pour verifiez si l'email et le password est bien écrit grâce à un Regex
 const mailRegex =
@@ -138,7 +138,7 @@ exports.login = (req, res, next) => {
 exports.modifyUser = (req, res, next) => {
   const bio = req.body.bio;
   let id = utils.getUserId(req.headers.authorization);
-
+  console.log(req.file);
   User.findOne({
     where: { id: id},
   })

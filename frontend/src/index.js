@@ -8,13 +8,20 @@ import rootReducer from './reducers'
 import App from './App';
 import './styles/index.scss';
 import {getUsers} from './actions/users.action'
+import { getPosts } from './actions/post.action';
+import { getComments } from './actions/comment.action';
+import { getLikes } from './actions/like.action';
 
 
 const store = createStore(
   rootReducer, composeWithDevTools(applyMiddleware(thunk)),
 )
 
+
 store.dispatch(getUsers())
+store.dispatch(getPosts())
+store.dispatch(getComments())
+store.dispatch(getLikes())
 
 ReactDOM.render(
    <Provider store={store}>
