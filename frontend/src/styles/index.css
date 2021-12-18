@@ -1,0 +1,500 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bg {
+  background-color: #f1dfd1;
+}
+
+/************** Header **************/
+nav li {
+  width: auto;
+  font-size: 1.3rem;
+  color: #000;
+  margin-left: 20px;
+  text-align: center;
+}
+
+nav ul {
+  cursor: pointer;
+}
+
+.active-btn {
+  background-color: #000;
+  color: #fff;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+/************** Main **************/
+#main-home {
+  height: 1000px;
+  background-image: url(../img/bg-home.jpg);
+}
+
+#main-home .bg-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#main-home .text-size-h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 42px #f1dfd1, 0 0 77px #f1dfd1, 0 0 100px #f1dfd1;
+}
+
+#main-home .connection-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #000;
+}
+
+.main-post {
+  background: url(../img/bank.jpg);
+  background-size: cover;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.send-post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.send-post-container .send-post-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.send-post-container .send-post-header .img-sendPost {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.send-post-container .send-post-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.send-post-container .send-post-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.send-post-container .send-post-footer .image-upload {
+  position: relative;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+}
+
+.send-post-container .send-post-footer .image-upload img {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  -webkit-transform: translate(-18px, -1px);
+          transform: translate(-18px, -1px);
+}
+
+.send-post-container .send-post-footer .image-upload input {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  -webkit-transform: translate(-5px, 11px);
+          transform: translate(-5px, 11px);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.send-post-container .send-post-footer .image-upload input::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.post-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-header .img-post {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.post-header button {
+  width: 40px;
+  height: 40px;
+  line-height: 2.8;
+  color: #000;
+  background-color: #f1dfd1;
+  border-radius: 50%;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.post-header button i {
+  font-size: 1.2rem;
+}
+
+.post-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-footer p {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.post-footer i {
+  font-size: 1.2rem;
+  color: #000;
+  cursor: pointer;
+}
+
+#main-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: url(../img/bank2.jpg);
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profil-container {
+  width: 100%;
+  margin: 1.5rem;
+  border: 1px solid #f1f1ff;
+  -webkit-box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
+          box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
+  border-radius: 25px;
+}
+
+.profil-container .profil-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profil-container .profil-header .rounded-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profil-container .profil-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.profil-container .profil-main .profil-main-img, .profil-container .profil-main .profil-main-edit {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.profil-container .profil-main .post-main-bio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 20px;
+}
+
+.profil-container .profil-main .profil-main-edit textarea {
+  width: 500px;
+}
+
+@media screen and (max-width: 600px) {
+  .profil-container .profil-main .profil-main-edit textarea {
+    width: 200px;
+  }
+}
+
+.profil-container .profil-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem;
+}
+
+form input {
+  margin-bottom: 15px;
+}
+
+form [required]:focus {
+  border: 2px solid blue;
+}
+
+form .btn {
+  font-size: 1.2rem;
+}
+
+.error-status {
+  color: blue;
+}
+
+.error-verify {
+  background-color: red;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.btn-floating {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.4rem;
+  line-height: 2.4;
+}
+
+.profil-off {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1000px;
+}
+
+.profil-off .content-profil-off {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fff;
+  -webkit-box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
+          box-shadow: 3px 3px 1px rgba(51, 51, 51, 0.418);
+  border-radius: 20px;
+  padding: 5rem;
+}
+
+.post-comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-comment-header .comment-header-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-comment-header .comment-header-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.post-comment-header .comment-header-user h5 {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+.post-comment-header .comment-header-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-comment-header .comment-header-info p {
+  margin-bottom: 0;
+}
+
+.post-comment-header .comment-header-info button {
+  width: 30px;
+  height: 30px;
+  line-height: 2;
+  color: #000;
+  background-color: #f1dfd1;
+  border-radius: 50%;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.post-comment-header .comment-header-info button i {
+  font-size: 1rem;
+}
+
+.comment-send button {
+  width: 150px;
+  text-transform: none;
+}
+/*# sourceMappingURL=index.css.map */

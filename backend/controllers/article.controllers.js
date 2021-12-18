@@ -59,7 +59,7 @@ module.exports.createArticle = (req, res, next) => {
 // On exporte la logique getArticles pour allez chercher tous les articles créés
 
 module.exports.getArticles = (req, res, next) => {
-  Article.findAll()
+  Article.findAll({order:[['createdAt', 'DESC']]})
     .then((Articles) => {
       res.status(200).json(Articles);
     })

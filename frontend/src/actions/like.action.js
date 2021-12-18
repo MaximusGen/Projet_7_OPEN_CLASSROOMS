@@ -5,6 +5,7 @@ const token = localStorage.getItem('token');
 
 export const GET_LIKES = "GET_LIKES"
 export const ADD_LIKES = "ADD_LIKES"
+export const DELETE_LIKE = "DELETE_LIKE"
 
 
 export const getLikes = (postId) => {
@@ -36,5 +37,20 @@ export const addLikes = (articleId) => {
         })
         .catch((err) => console.log(err)
         )
+    }
+}
+
+
+export const  deleteLike = (likeId) => {
+    return (dispatch) => {
+        return axios({
+            method: "delete",
+            url: `${process.env.REACT_APP_API_URL}api/article/likes/` + likeId,
+            headers: { 'Authorization': 'Bearer ' + token}
+        })
+        .then(() => {
+            dispatch({type:DELETE_LIKE, payload: {likeId}})
+        })
+        .catch((err) => console.log(err))
     }
 }

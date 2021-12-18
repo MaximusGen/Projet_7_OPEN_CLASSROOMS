@@ -56,7 +56,7 @@ exports.countLikeByArticleId = (req, res, next) => {
 
   // Article.findOne({ where : {id: articleId}})
   // .then(() => {
-     Likes.findAndCountAll({
+     Likes.findAll({
       where : {
         // ArticleId: articleId,
         UserId: userId,
@@ -73,20 +73,14 @@ exports.countLikeByArticleId = (req, res, next) => {
 
 exports.deleteLike = (req, res, next) => {
   let userId = jwtUtils.getUserId(req.headers.authorization);
-  let likeId = req.params.id;
+  let articleId = req.params.id;
 
-  Likes.findOne({
-    where: { id: likeId }
-  })
-  .then(() => {
     Likes.destroy({
       where: {
         UserId: userId,
-        ArticleId: likeId,
+        ArticleId: articleId,
       },
     })
     .then(() => res.status(200).json({message: " Like deleted ! "}))
     .catch((err) => res.status(500).json({ err: "Like not deleted ! " + err}))
-  })
-  .catch((err) => res.status(500).json({ err: "Article not Found ! " + err}))
 }

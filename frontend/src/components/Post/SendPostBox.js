@@ -12,19 +12,16 @@ export default function SendPostBox() {
 
   
   
-  const handlePost =  () => {
-    console.log(text, image);
+  const handlePost = async () => {
     
     if (text || postPicture) {
       const data = new FormData();
-      // data.append("filename", userData.id);
       data.append("text", text)
       data.append("image", image);
 
-      console.log(data, "handlepost");
-      dispatch(createPost(data));
-      // dispatch(getPosts());
-      // cancelPost();
+      await dispatch(createPost(data));
+      dispatch(getPosts());
+      cancelPost();
     } else {
       alert("Veuillez entrer un message");
     }

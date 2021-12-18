@@ -121,11 +121,14 @@ module.exports.deleteComment = (req, res, next) => {
 };
 
 module.exports.getComments = (req, res, next) => {
-  Comment.findAll()
-    .then((comment) => {
-      res.status(200).json(comment);
-    })
-    .catch((err) => {
-      res.status(400).json({ err: "Article not found ! " + err });
-    });
+
+    Comment.findAll({ order: [['createdAt', 'DESC']], 
+    // include: [{model: Article, as: 'Article'}]
+  })
+      .then((comment) => {
+        res.status(200).json(comment);
+      })
+      .catch((err) => {
+        res.status(400).json({ err: "Comment not found ! " + err });
+      }); 
 };

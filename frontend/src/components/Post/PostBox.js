@@ -3,18 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { updatePost, deletePost } from "../../actions/post.action";
 import { isEmpty, dateParser } from "../../utils/Utils";
 import Comment from "./Comment";
-import { addLikes, getLikes } from '../../actions/like.action';
 import { getComments, addComment } from "../../actions/comment.action";
+import LikeButton from "./LikeButton";
 
 export default function PostBox({ post }) {
   const [showComment, setShowComment] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
   const [textComment, setTextComment] = useState("");
+   
   
+
   const dispatch = useDispatch();
-  
-  const likeData = useSelector(state => state.likeReducer)
+
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const commentData = useSelector((state) => state.commentReducer)
@@ -33,11 +34,6 @@ export default function PostBox({ post }) {
     }
   };
 
-  const addLike = () => {
-    dispatch(addLikes(post.id));
-    dispatch(getLikes(post.id));
-  }
-
   const updatePostText = () => {
     if (textUpdate) {
       dispatch(updatePost(post.id, textUpdate));
@@ -53,7 +49,7 @@ export default function PostBox({ post }) {
 
   return (
     <>
-      <div className="post-container border border-dark bg-light p-4 m-5">
+      <div className="post-container border border-dark bg-light p-4 mt-5">
         <div className="post-header border-bottom">
           <img
             className="img-post m-3"
@@ -79,6 +75,9 @@ export default function PostBox({ post }) {
                   return user.username;
                 } else return null;
               })}{" "}
+              {usersData.isAdmin === "1" && (
+                <span>👑</span>
+              )}
           </h4>
           <p style={{ marginBottom: "0", marginTop: "5px" }}>
             Publié le: &nbsp;
@@ -127,16 +126,16 @@ export default function PostBox({ post }) {
             </button>
           </div>
         )}
-        <img src={post.imageUrl} className="img mb-5" alt="" width="100%" />
+        <img src={post.imageUrl} className="img mb-5" alt={post.imageUrl} />
         <div className="post-footer border-bottom">
           <p
             onClick={() => setShowComment(!showComment)}
             style={{ cursor: "pointer" }}
           >
-            Commentaires <i className="far fa-comments">{commentData.ArticleId === post.id}</i>
+            Commentaires <i className="far fa-comments">{commentData.ArticleId === post.id ? commentData.length : null}</i>
           </p>
           <div>
-          <i onClick={addLike} className="far fa-thumbs-up m-4">{likeData.count}</i>
+          <LikeButton post={post} />
           </div>
         </div>
         {showComment && <Comment post={post} />}

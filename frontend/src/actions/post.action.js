@@ -25,10 +25,7 @@ export const getPosts = () => {
 export const createPost = (data) => {
     console.log(data);
     return (dispatch) => {
-        return axios ({
-            method: "post",
-            url: `${process.env.REACT_APP_API_URL}api/article`,
-            data:{data},
+        return axios.post(`${process.env.REACT_APP_API_URL}api/article/`, data, {
             headers : { 'Authorization': 'Bearer ' + token}
         })
         .then(() => {

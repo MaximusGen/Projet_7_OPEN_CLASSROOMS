@@ -35,7 +35,7 @@ export default function BoxProfil() {
           <img
             className=" rounded-img m-3"
             src={userData.imageUrl}
-            alt={userData.imageUrl}
+            alt={userData.username}
           />
           <h1 className="text-dark fs-2">{userData.username}</h1>
           <button onClick={handleDelete} type="button" className="btn btn-primary btn-floating bg-tw">

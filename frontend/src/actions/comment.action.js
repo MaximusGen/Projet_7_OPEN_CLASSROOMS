@@ -11,7 +11,7 @@ export const getComments = () => {
     return (dispatch) => {
         return axios({
             method:"get",
-            url:`${process.env.REACT_APP_API_URL}api/comment/`,
+            url:`${process.env.REACT_APP_API_URL}api/comment`,
             headers: { 'Authorization': 'Bearer ' + token}
         })
         .then((res) => {
