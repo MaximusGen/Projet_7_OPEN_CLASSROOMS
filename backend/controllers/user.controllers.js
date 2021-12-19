@@ -18,7 +18,6 @@ const Like = models.Like;
 const mailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const passwordRegex = /^(?=.*\d).{4,8}$/;
 
 // Controllers
 
@@ -35,24 +34,6 @@ exports.register = (req, res, next) => {
 
   if (email == null || username == null || password == null) {
     return res.status(400).json(" All fields are not filled !");
-  }
-
-  // Verify pseudo lenght, mail regex or  password
-
-  if (username.length >= 20 || username.length <= 3) {
-    return res
-      .status(400)
-      .json({ message: "wrong username, your username must be length 4 - 20" });
-  }
-
-  if (!passwordRegex.test(password)) {
-    return res.status(400).json({
-      message: "password invalid (must length 4 - 8 and includes a number",
-    });
-  }
-
-  if (!mailRegex.test(email)) {
-    return res.status(400).json({ message: "email is not valid" });
   }
 
   // Verify if user is already in database
@@ -74,7 +55,6 @@ exports.register = (req, res, next) => {
               password: hash,
               bio: bio,
               imageUrl: imageUrl,
-              isAdmin: "0",
             };
             User.create(newUser).then(() => {
               return res
