@@ -35,7 +35,7 @@ export default function Post() {
           <main className="main-post">
             <div className="container">
               <div className="row">
-                <div className="col-md-8 m-4">
+                <div className="page-post">
                   <SendPostBox />
                   {!isEmpty(postData[0]) && 
                      postData.map((post) => {

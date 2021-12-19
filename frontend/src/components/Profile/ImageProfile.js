@@ -34,7 +34,7 @@ export default function ImageProfile() {
       <input
         type="file"
         className="form-control"
-        style={{width:"auto"}}
+        style={{width:"75%"}}
         id="image"
         name="image"
         accept=".jpg, .jpeg, .png, .gif"

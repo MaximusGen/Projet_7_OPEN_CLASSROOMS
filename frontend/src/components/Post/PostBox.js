@@ -4,7 +4,7 @@ import { updatePost, deletePost } from "../../actions/post.action";
 import { isEmpty, dateParser } from "../../utils/Utils";
 import Comment from "./Comment";
 import { getComments, addComment } from "../../actions/comment.action";
-import LikeButton from "./LikeButton";
+// import LikeButton from "./LikeButton";
 
 export default function PostBox({ post }) {
   const [showComment, setShowComment] = useState(false);
@@ -49,7 +49,7 @@ export default function PostBox({ post }) {
 
   return (
     <>
-      <div className="post-container border border-dark bg-light p-4 mt-5">
+      <div className="post-container border border-dark bg-light p-4 m-4">
         <div className="post-header border-bottom">
           <img
             className="img-post m-3"
@@ -71,13 +71,19 @@ export default function PostBox({ post }) {
           >
             {!isEmpty(usersData[0]) &&
               usersData.map((user) => {
-                if (user.id === post.UserId) {
+                if (user.id === post.UserId ) {
                   return user.username;
                 } else return null;
-              })}{" "}
-              {usersData.isAdmin === "1" && (
-                <span>👑</span>
-              )}
+              })}
+            {!isEmpty(usersData[0]) &&
+              usersData.map((user) => {
+                if (user.idAdmin === "1") {
+                  return <span>👑</span>;
+                } else return null;
+              })}
+              {/* {usersData.isAdmin === "1" && (
+                
+              )} */}
           </h4>
           <p style={{ marginBottom: "0", marginTop: "5px" }}>
             Publié le: &nbsp;
@@ -132,10 +138,10 @@ export default function PostBox({ post }) {
             onClick={() => setShowComment(!showComment)}
             style={{ cursor: "pointer" }}
           >
-            Commentaires <i className="far fa-comments">{commentData.ArticleId === post.id ? commentData.length : null}</i>
+            Commentaires <i className="far fa-comments">{commentData.ArticleId === post.id && commentData[0].length}</i>
           </p>
           <div>
-          <LikeButton post={post} />
+          {/* <LikeButton post={post} /> */}
           </div>
         </div>
         {showComment && <Comment post={post} />}

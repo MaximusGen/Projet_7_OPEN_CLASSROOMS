@@ -30,7 +30,7 @@ export default function BoxProfil() {
     }
    
     return (
-        <div className="profil-container" style={{backgroundColor:"#fff"}}>
+        <div className="profil-container" style={{backgroundColor:"#fff", width:"100%"}}>
         <div className="profil-header border-bottom m-3">
           <img
             className=" rounded-img m-3"

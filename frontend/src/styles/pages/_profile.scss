@@ -22,6 +22,12 @@
       height: 150px;
       border-radius: 50%;
     }
+    @media screen and (max-width: 600px) {
+      .rounded-img {
+        @include image-rounded(90px,90px,50%);
+      }
+      
+    }
   }
   
   .profil-main {
@@ -30,17 +36,18 @@
     .profil-main-img, .profil-main-edit {
       width: 100%;
       @include flex-direction(flex, center, center, column);
-    }
 
+    }
+    
     .post-main-bio {
       @include flex-direction(flex, center, center, column);
       margin: 20px;
     }
-
+    
     .profil-main-edit textarea {
       width: 500px;
     }
-
+    
     @media screen and (max-width: 600px) {
       .profil-main-edit textarea {
         width: 200px;
@@ -50,7 +57,13 @@
   .profil-footer {
     @include flex(flex, space-between, center)
   }
+
 }
 
+@media screen and (max-width: 600px) {
+  .profil-container {
+    margin:5px 20px;
+  }
+}
 
 

@@ -41,7 +41,7 @@ export default function SendPostBox() {
   return (
     <>
       <div
-        className="send-post-container border border-dark p-4 m-3"
+        className="send-post-container border border-dark p-4 m-4"
         style={{ backgroundColor: "#fff" }}
       >
         <div className="send-post-header border-bottom m-2">
@@ -83,6 +83,7 @@ export default function SendPostBox() {
             <img src="../img/image.svg" alt="" />
             <input
               type="file"
+              className="form-control"
               id="image"
               name="image"
               accept=".jpg, .jpeg, .png, .gif"

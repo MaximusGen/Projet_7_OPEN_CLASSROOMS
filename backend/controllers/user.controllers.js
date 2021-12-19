@@ -31,7 +31,6 @@ exports.register = (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const bio = req.body.bio;
-  const isAdmin = req.body.isAdmin;
   const imageUrl = "https://images.assetsdelivery.com/compings_v2/apoev/apoev1904/apoev190400006.jpg";
 
   if (email == null || username == null || password == null) {
@@ -40,7 +39,7 @@ exports.register = (req, res, next) => {
 
   // Verify pseudo lenght, mail regex or  password
 
-  if (username.length >= 20 || username.length <= 4) {
+  if (username.length >= 20 || username.length <= 3) {
     return res
       .status(400)
       .json({ message: "wrong username, your username must be length 4 - 20" });
@@ -75,7 +74,7 @@ exports.register = (req, res, next) => {
               password: hash,
               bio: bio,
               imageUrl: imageUrl,
-              isAdmin: isAdmin,
+              isAdmin: "0",
             };
             User.create(newUser).then(() => {
               return res
