@@ -14,7 +14,9 @@ export default function Comment({ post }) {
       {!isEmpty(commentData[0]) &&
         commentData.map((comment) => {
           if (post.id === comment.ArticleId) {
-            return  <CommentBox key={comment.id} comment={comment} post={post} />
+            return  <>
+            <CommentBox key={comment.id} comment={comment} post={post} />
+            </>
           } else return null;
         })}
     </>

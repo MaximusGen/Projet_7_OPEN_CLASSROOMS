@@ -101,13 +101,13 @@
         font-size:1.2rem;
       }
     }
-    @media screen and (max-width: 400px) {
-      .post-header {
-        @include flex(flex, center, center);
-      }
-   }
   }
-
+  
+  @media screen and (max-width: 400px) {
+    .post-header {
+      @include flex-direction(flex, center, center,column);
+    }
+ }
 
   
   .post-footer {

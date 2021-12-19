@@ -51,14 +51,9 @@ exports.like = (req, res, next) => {
 
 exports.countLikeByArticleId = (req, res, next) => {
   let userId = jwtUtils.getUserId(req.headers.authorization);
-  // let articleId = req.params.id;
 
-
-  // Article.findOne({ where : {id: articleId}})
-  // .then(() => {
      Likes.findAll({
       where : {
-        // ArticleId: articleId,
         UserId: userId,
       },   
      })
@@ -66,8 +61,6 @@ exports.countLikeByArticleId = (req, res, next) => {
          res.status(201).json(count)
      })
      .catch((err) => res.status(500).json({ err: "Like not Found ! " + err}))
-  // })
-  // .catch((err) => res.status(500).json({err: "Article not Found ! " + err}))
 }
 
 

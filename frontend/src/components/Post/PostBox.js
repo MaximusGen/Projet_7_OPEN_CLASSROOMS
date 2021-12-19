@@ -7,7 +7,6 @@ import { getComments, addComment } from "../../actions/comment.action";
 // import LikeButton from "./LikeButton";
 
 export default function PostBox({ post }) {
-  const [showComment, setShowComment] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
   const [textComment, setTextComment] = useState("");
@@ -27,7 +26,6 @@ export default function PostBox({ post }) {
     if (textComment) {
       await dispatch(addComment(post.id, textComment));
       dispatch(getComments());
-      setShowComment(true);
       setTextComment("")
     } else {
       alert("Veuillez remplir le formulaire");
@@ -75,12 +73,6 @@ export default function PostBox({ post }) {
                   return user.username;
                 } else return null;
               })}
-            {!isEmpty(usersData[0]) &&
-              usersData.map((user) => {
-                if (user.idAdmin === "1") {
-                  return <span>👑</span>;
-                } else return null;
-              })}
               {/* {usersData.isAdmin === "1" && (
                 
               )} */}
@@ -88,7 +80,7 @@ export default function PostBox({ post }) {
           <p style={{ marginBottom: "0", marginTop: "5px" }}>
             Publié le: &nbsp;
             {dateParser(post.createdAt)}
-            {userData.isAdmin === "1" && (
+            {userData.isAdmin === "1"  && (
               <button onClick={handleDelete}>
                 <i
                   className="fa fa-trash"
@@ -135,16 +127,15 @@ export default function PostBox({ post }) {
         <img src={post.imageUrl} className="img mb-5" alt={post.imageUrl} />
         <div className="post-footer border-bottom">
           <p
-            onClick={() => setShowComment(!showComment)}
             style={{ cursor: "pointer" }}
           >
-            Commentaires <i className="far fa-comments">{commentData.ArticleId === post.id && commentData[0].length}</i>
+          {commentData.ArticleId === post.id ? commentData.length : null} Commentaires <i className="far fa-comments"></i>
           </p>
           <div>
           {/* <LikeButton post={post} /> */}
           </div>
         </div>
-        {showComment && <Comment post={post} />}
+         <Comment post={post} />
         <div className="comment-send">
         <form action="" className="form-3" onSubmit={handleComment}>
           <label className="" htmlFor="text">

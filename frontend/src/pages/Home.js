@@ -83,9 +83,6 @@ export default function Home() {
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="text-white">
                   <h1 className="text-size-h1">Groupomana Social</h1>
-                  <p className="text-danger fs-4">
-                    En cours de développement ... 🚧  !
-                  </p>
                   <div className="connection-form">
                     <div className="form-content">
                       {modalConnect && <ModalConnect />}
