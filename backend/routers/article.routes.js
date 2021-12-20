@@ -6,8 +6,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const multer = require("../middleware/multer");
 const articleCtrl = require("../controllers/article.controllers");
-const likeCrtrl = require("../controllers/like.controllers");
-// const commentCtrl = require("../controllers/comment.controllers");
+// const likeCrtrl = require("../controllers/like.controllers");
 
 
 // Route pour les Articles
@@ -18,18 +17,12 @@ router.put("/:id", auth, multer, articleCtrl.modifyArticle);
 router.delete("/:id", auth, articleCtrl.deleteArticle);
 
 
-// ROUTE FOR COMMENT AN ARTICLE 
-
-// router.post("/comment/create", auth, multer, commentCtrl.createComment);
-// router.get("/comment/all", auth, commentCtrl.getComments)
-// router.put("/comment/:id", auth, commentCtrl.modifyArticle)
-// router.delete("/comment/:id", auth, commentCtrl.delete)
 
 // Routes pour like ou dislike un article 
 
-router.post("/likes/:id", auth, likeCrtrl.like)
-router.get("/likes/:id", auth, likeCrtrl.countLikeByArticleId)
-router.delete("/likes/:id", auth, likeCrtrl.deleteLike)
+// router.post("/likes/:id", auth, likeCrtrl.like)
+// router.get("/likes/:id", auth, likeCrtrl.countLikeByArticleId)
+// router.delete("/likes/:id", auth, likeCrtrl.deleteLike)
 // router.post('/likeOrDislike/:id', auth, likeCrtrl.likeOrDislike)
 
 module.exports = router;

@@ -9,4 +9,13 @@
       border-radius: 20px;
       padding: 5rem;
     }
+    
+   @media screen and (max-width: 600px) {
+
+    .content-profil-off{
+      margin: 20px;
+      padding: 2rem;
+    }
+     
+   }
   }

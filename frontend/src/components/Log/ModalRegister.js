@@ -18,7 +18,7 @@ export default function ModalRegister() {
   
   
     if(email.match(emailRegex)) {
-      emailError.innerHTML ="✔️ E-mail:"
+      emailError.innerHTML ="E-mail:"
       emailError.style.color ="#000"
       return true;
     } else {
@@ -34,7 +34,7 @@ export default function ModalRegister() {
     const passwordError = document.getElementById('password-label');
 
       if(password.match(passwordRegex)) {
-        passwordError.innerHTML =" ✔️ Mot de passe:"
+        passwordError.innerHTML ="Mot de passe:"
         passwordError.style.color ="#000"
         return true;
       } else {
@@ -49,7 +49,7 @@ export default function ModalRegister() {
     const usernameError = document.getElementById('username-label');
 
       if(username) {
-        usernameError.innerHTML =" ✔️ Nom/Prénom:"
+        usernameError.innerHTML ="Nom/Prénom:"
         usernameError.style.color ="#000"
         return true;
       } else {
@@ -152,17 +152,6 @@ export default function ModalRegister() {
             
           />
 
-          {/* <label htmlFor="confirmPassword" className="fs-4 texte-dark">
-           Confirmer votre mot de passe:
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            className="form-control fs-4"
-            
-          />
-           */}
           <label htmlFor="bio" className="fs-4 texte-dark">
            Bio:
           </label>

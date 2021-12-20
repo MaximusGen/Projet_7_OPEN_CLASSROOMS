@@ -1,32 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePost, deletePost } from "../../actions/post.action";
 import { isEmpty, dateParser } from "../../utils/Utils";
 import Comment from "./Comment";
 import { getComments, addComment } from "../../actions/comment.action";
-// import LikeButton from "./LikeButton";
 
 export default function PostBox({ post }) {
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
   const [textComment, setTextComment] = useState("");
-   
-  
+  const [showComments, setShowComments] = useState(false);
 
   const dispatch = useDispatch();
 
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
-  const commentData = useSelector((state) => state.commentReducer)
-  
+   
+  useEffect(() => {
+      const btn = document.getElementById('button');
+      if(userData.isAdmin === "1") {
+        btn.style.display =  'none';
+      } else return null;
+  }, [userData.isAdmin])
 
-  const handleComment = async (e) => {
-    e.preventDefault();
 
+  const handleComment = async () => {
     if (textComment) {
       await dispatch(addComment(post.id, textComment));
       dispatch(getComments());
-      setTextComment("")
+      setTextComment("");
+      setShowComments(true);
     } else {
       alert("Veuillez remplir le formulaire");
     }
@@ -69,18 +72,18 @@ export default function PostBox({ post }) {
           >
             {!isEmpty(usersData[0]) &&
               usersData.map((user) => {
-                if (user.id === post.UserId ) {
+                if (user.id === post.UserId) {
                   return user.username;
                 } else return null;
               })}
-              {/* {usersData.isAdmin === "1" && (
-                
-              )} */}
+             <span id="span"></span>
           </h4>
           <p style={{ marginBottom: "0", marginTop: "5px" }}>
             Publié le: &nbsp;
             {dateParser(post.createdAt)}
             {userData.isAdmin === "1"  && (
+              <>
+              
               <button onClick={handleDelete}>
                 <i
                   className="fa fa-trash"
@@ -88,13 +91,14 @@ export default function PostBox({ post }) {
                   aria-hidden="true"
                 ></i>
               </button>
+              </>
             )}
-            {userData.id === post.UserId && (
+            {userData.id === post.UserId  && (
               <>
                 <button onClick={() => setIsUpdated(!isUpdated)}>
                   <i className="fas fa-edit"></i>
                 </button>
-                <button onClick={handleDelete}>
+                <button id="button" onClick={handleDelete}>
                   <i
                     className="fa fa-trash"
                     id="deleteIcon"
@@ -119,40 +123,40 @@ export default function PostBox({ post }) {
               rows="10"
             ></textarea>
             <br />
-            <button className="btn btn-primary" onClick={updatePostText}>
+            <button className="btn btn-primary" onClick={updatePostText} style={{marginBottom:"10px"}}>
               Validez votre modification
             </button>
+            <br />
           </div>
         )}
         <img src={post.imageUrl} className="img mb-5" alt={post.imageUrl} />
         <div className="post-footer border-bottom">
           <p
             style={{ cursor: "pointer" }}
+            onClick={() => setShowComments(!showComments)}
           >
-          {commentData.ArticleId === post.id ? commentData.length : null} Commentaires <i className="far fa-comments"></i>
+            {post.Comments.length} Commentaires{" "}
+            <i className="far fa-comments"></i>
           </p>
-          <div>
-          {/* <LikeButton post={post} /> */}
-          </div>
         </div>
-         <Comment post={post} />
+        {showComments && <Comment post={post} />}
         <div className="comment-send">
-        <form action="" className="form-3" onSubmit={handleComment}>
-          <label className="" htmlFor="text">
-            Votre commentaire:
-          </label>
-          <input
-            type="text"
-            id="text"
-            className="form-control"
-            value={textComment}
-            onChange={(e) => setTextComment(e.target.value)}
-          />
-          <button className="btn btn-dark mb-3 btn-rounded" type="submit">
-            Envoyez
-          </button>
-        </form>
-      </div>
+          <form action="" className="form-3" onSubmit={handleComment}>
+            <label className="" htmlFor="text">
+              Votre commentaire:
+            </label>
+            <input
+              type="text"
+              id="text"
+              className="form-control"
+              value={textComment}
+              onChange={(e) => setTextComment(e.target.value)}
+            />
+            <button className="btn btn-dark mb-3 btn-rounded" type="submit">
+              Envoyez
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

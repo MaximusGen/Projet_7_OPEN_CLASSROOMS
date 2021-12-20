@@ -32,7 +32,7 @@ CREATE TABLE `articles` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `articles` (
 
 LOCK TABLES `articles` WRITE;
 /*!40000 ALTER TABLE `articles` DISABLE KEYS */;
-INSERT INTO `articles` VALUES (5,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, rerum quae? Similique consequatur voluptas tempora officia quia, quos animi labore.\n',NULL,23,'2021-12-11 14:04:36','2021-12-11 14:04:36'),(59,'Bonjour, je suis votre administrateur ',NULL,26,'2021-12-18 10:34:56','2021-12-18 10:34:56'),(64,'J\'adore ce nouveaux site  :)',NULL,27,'2021-12-19 16:16:15','2021-12-19 16:16:15');
+INSERT INTO `articles` VALUES (5,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, rerum quae? Similique consequatur voluptas tempora officia quia, quos animi labore.\n',NULL,23,'2021-12-11 14:04:36','2021-12-11 14:04:36'),(59,'Bonjour, je suis votre administrateur ',NULL,26,'2021-12-18 10:34:56','2021-12-18 10:34:56'),(64,'J\'adore ce nouveaux site  :)',NULL,27,'2021-12-19 16:16:15','2021-12-19 16:16:15'),(68,'Beau coucher de soleil !!!','http://localhost:5000/images/thumbnail_IMG_20281640017341254.jpg',22,'2021-12-20 16:22:21','2021-12-20 19:31:22');
 /*!40000 ALTER TABLE `articles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +64,7 @@ CREATE TABLE `comments` (
   KEY `articleId` (`articleId`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`articleId`) REFERENCES `articles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,23,5,'Wahou quel article de fou !!!','2021-12-13 10:13:31','2021-12-13 10:13:31'),(33,22,59,'C\'est sur','2021-12-18 11:10:42','2021-12-18 11:10:42'),(34,22,5,'c\'est sur il est génial','2021-12-18 13:35:42','2021-12-18 13:35:42'),(35,27,59,'Coucou ça va bien ?','2021-12-19 16:17:05','2021-12-19 16:17:05'),(36,27,5,'QUOI !!!','2021-12-19 16:17:20','2021-12-19 16:17:20');
+INSERT INTO `comments` VALUES (1,23,5,'Wahou quel article de fou !!!','2021-12-13 10:13:31','2021-12-13 10:13:31'),(35,27,59,'Coucou ça va bien ?','2021-12-19 16:17:05','2021-12-19 16:17:05'),(36,27,5,'QUOI !!!','2021-12-19 16:17:20','2021-12-19 16:17:20'),(44,26,5,'Ca va?','2021-12-20 16:17:33','2021-12-20 16:17:33'),(45,26,64,'Moi aussi !','2021-12-20 16:19:09','2021-12-20 16:19:09');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ CREATE TABLE `users` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +158,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (22,'Maxime Paupy','maxime@gmail.com','$2b$10$/SntO7pcSiSPnuHPKI0.Tuwd/A1DjVw.DueT7sn8mOxmy7O3YFLye','bio','http://localhost:5000/images/max1639928357140.jpg','0','2021-12-10 15:37:30','2021-12-19 15:39:17'),(23,'Romain Paupy','romain@gmail.com','$2b$10$Co0e7z35SeMo6eQpeS.hfu2yycktlAjSKj98if58PdCutI75zlKDe','Je m\'apelle Romain. ','http://localhost:5000/images/outrun-vaporwave-hd-wallpaper-preview1639235650026.jpg','0','2021-12-11 14:02:54','2021-12-11 15:14:10'),(26,'Andrew Doe','andrew@gmail.com','$2b$10$1BURKSjOKa4VWaZSgDqeo.LQ3rLoo4mJJt5MtsW7JEayS4n.qFUZa','Je m\'apelle andrew, j\'ai 30 ans ','http://localhost:5000/images/114858345-logiciel-développement-web-concept-de-programmation-langage-de-programmation-abstrait-et-code-de-pro1639823671321.jpg','1','2021-12-14 10:47:50','2021-12-18 10:34:31'),(27,'Julie','julie@gmail.com','$2b$10$0NmSiVwFpMjCmm21WMPsxebFJLnInv9Ns9S7.Asc8bp4KnS50o7Y6','Bonjour je m\'appelle Julie, j\'ai 22 ans et je suis responsable DHR','http://localhost:5000/images/dc097586256d6569149b5e5d2b2ad31639930545999.jpg','0','2021-12-19 16:13:54','2021-12-19 16:15:46');
+INSERT INTO `users` VALUES (22,'Maxime Paupy','maxime@gmail.com','$2b$10$/SntO7pcSiSPnuHPKI0.Tuwd/A1DjVw.DueT7sn8mOxmy7O3YFLye','bio','http://localhost:5000/images/max1639928357140.jpg','0','2021-12-10 15:37:30','2021-12-19 15:39:17'),(23,'Romain Paupy','romain@gmail.com','$2b$10$Co0e7z35SeMo6eQpeS.hfu2yycktlAjSKj98if58PdCutI75zlKDe','Je m\'apelle Romain. ','http://localhost:5000/images/outrun-vaporwave-hd-wallpaper-preview1639235650026.jpg','0','2021-12-11 14:02:54','2021-12-11 15:14:10'),(26,'Andrew Doe','andrew@gmail.com','$2b$10$1BURKSjOKa4VWaZSgDqeo.LQ3rLoo4mJJt5MtsW7JEayS4n.qFUZa','Je m\'apelle andrew, j\'ai 30 ans ','http://localhost:5000/images/114858345-logiciel-développement-web-concept-de-programmation-langage-de-programmation-abstrait-et-code-de-pro1639823671321.jpg','1','2021-12-14 10:47:50','2021-12-18 10:34:31'),(27,'Julie','julie@gmail.com','$2b$10$0NmSiVwFpMjCmm21WMPsxebFJLnInv9Ns9S7.Asc8bp4KnS50o7Y6','Bonjour je m\'appelle Julie, j\'ai 22 ans et je suis responsable DHR','http://localhost:5000/images/dc097586256d6569149b5e5d2b2ad31639930545999.jpg','0','2021-12-19 16:13:54','2021-12-19 16:15:46'),(30,'Elliot','elliott@gmail.com','$2b$10$QanqLnJBuESw/opi3cxZnOoSpbaPwZPKC8DWO.N5PJB0bUH35qPt2','','https://images.assetsdelivery.com/compings_v2/apoev/apoev1904/apoev190400006.jpg','0','2021-12-20 19:43:42','2021-12-20 19:43:42');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -171,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-19 22:38:26
+-- Dump completed on 2021-12-20 20:54:19

@@ -60,10 +60,10 @@ export default function Post() {
           <main className="main-post">
             <div className="profil-off">
               <div className="content-profil-off">
-                <h1 className="text-center">
+                <h1 className="text-center" style={{color:"#000", fontSize:"2.3rem"}}>
                   VOUS NE POUVEZ PAS ACCEDER AU CONTENU DE CETTE PAGE ⚠️ !
                 </h1>
-                <Link className="profil-off-link" to="/">
+                <Link style={{color:"red", fontSize:"1.5rem"}} to="/">
                   {" "}
                   Veuillez vous connectez sur la page d'Acceuil 🏠 !{" "}
                 </Link>

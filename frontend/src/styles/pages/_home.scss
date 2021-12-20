@@ -46,7 +46,17 @@ nav {
     @include flex-direction(flex,center,center,column);
     color: #000;
   }
+
+  @media screen and (max-width: 600px) {
+    .text-size-h1{
+      font-size:3rem;
+    }
+  }
 }
+
+
+
+
 
 
 

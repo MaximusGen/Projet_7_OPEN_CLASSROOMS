@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateComment,
@@ -12,6 +12,13 @@ export default function CommentBox({ post, comment }) {
   const usersData = useSelector((state) => state.usersReducer);
   const [isUpdatedComment, setIsUpdatedComment] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
+ 
+  useEffect(() => {
+    const button = document.getElementById('button-comment');
+    if(userData.isAdmin === "1") {
+      button.style.display =  'none';
+    } else return null;
+}, [userData.isAdmin])
 
   const updateCommentText = (e) => {
     if (textUpdate) {
@@ -20,16 +27,19 @@ export default function CommentBox({ post, comment }) {
     setIsUpdatedComment(false);
   };
 
-  const handleDelete = (e) => {
-    e.preventDefault();
+  const handleDelete = () => {
     if (window.confirm("Vous êtes sur de vouloir supprimer ce commentaire ?")) {
       dispatch(deleteComment(comment.id));
+      window.location.reload();
     }
   }
+
+  
 
   return (
     <>
       <div className="post-comment mt-3" key="{comment.id}">
+        {comment.length}
         <div className="post-comment-header flex-comment">
           <div className="comment-header-user">
             <img
@@ -70,11 +80,12 @@ export default function CommentBox({ post, comment }) {
               {userData.id === comment.UserId && (
                 <>
                   <button
+                   
                     onClick={() => setIsUpdatedComment(!isUpdatedComment)}
                   >
                     <i className="fas fa-edit"></i>
                   </button>
-                  <button onClick={handleDelete}>
+                  <button   id="button-comment" onClick={handleDelete}>
                     <i
                       className="fa fa-trash"
                       id="deleteIcon"

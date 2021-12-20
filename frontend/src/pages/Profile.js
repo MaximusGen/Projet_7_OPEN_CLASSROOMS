@@ -56,8 +56,9 @@ export default function Profile() {
             <div className="profil-off">
               <div className="content-profil-off">
                 <h1 className="text-center" style={{color:"#000", fontSize:"2.3rem"}}>
-                  VOUS NE POUVEZ PAS ACCEDER AU CONTENUE CETTE PAGE ⚠️ !
+                  VOUS NE POUVEZ PAS ACCEDER AU CONTENUE DE CETTE PAGE ⚠️ !
                 </h1>
+                <br />
                 <Link style={{color:"red", fontSize:"1.5rem"}} to="/">
                   {" "}
                   Veuillez vous connectez sur la page d'Acceuil 🏠 !{" "}

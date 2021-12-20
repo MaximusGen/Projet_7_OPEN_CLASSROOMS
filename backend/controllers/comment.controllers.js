@@ -123,7 +123,7 @@ module.exports.deleteComment = (req, res, next) => {
 module.exports.getComments = (req, res, next) => {
 
     Comment.findAll({ order: [['createdAt', 'DESC']], 
-    // include: [{model: Article, as: 'Article'}]
+    include: [{model: Article, require:true }]
   })
       .then((comment) => {
         res.status(200).json(comment);
