@@ -33,7 +33,11 @@ exports.register = (req, res, next) => {
   const imageUrl = "https://images.assetsdelivery.com/compings_v2/apoev/apoev1904/apoev190400006.jpg";
 
   if (email == null || username == null || password == null) {
-    return res.status(400).json(" All fields are not filled !");
+    return res.status(400).json({ error:" All fields are not filled !"});
+  }
+
+  if(password <= 4 || password >= 15) {
+    res.status(400).json({ error:" Le mot de passe rentrez est incorrect, il doit contenir entre 4 et 15 caractères !"});
   }
 
   // Verify if user is already in database
@@ -45,6 +49,11 @@ exports.register = (req, res, next) => {
     //Create a new user with hash for password
 
     .then((userFound) => {
+      
+        if(userFound !== null) {
+          return res.status(400).json({ error: 'Cette adresse e-mail est déjà utilisé'})
+        }
+
       if (!userFound) {
         bcrypt
           .hash(password, 10)
@@ -157,43 +166,7 @@ exports.modifyUser = (req, res, next) => {
     });
 };
 
-// TEST CONTROLLER UPLOADPPICTURE
-// On exporte la logique uploadPicture pour poster une image dans le profil de l'utilisateur
 
-// exports.uploadPicture = (req, res, next) => {
-//      let image = req.file
-//   User.findOne({
-//     where: {id: req.params.id }  
-//   })
-//   .then((user) => {
-//     const NewData = {
-//       imageUrl: image
-//     }
-//     const filename = user.imageUrl?.split("/images/")[1];
-//     if (req.file) {
-//       NewData["imageUrl"] = `${req.protocol}://${req.get("host")}/images/${
-//         req.file.filename
-//       }`;
-//       fs.unlink(`images/${filename}`, (err) => {
-//         if (err) {
-//           console.log(`images/${filename} not found !`);
-//         } else {
-//           console.log(`deleted old images/${filename}`);
-//         }
-//       });
-//     }
-//     User.update(NewData, { where: { id: req.params.id} })
-//       .then(() => {
-//         return res
-//           .status(201)
-//           .json({ message: "Image Posted !" });
-//       })
-//       .catch((err) => {
-//         return res.status(500).json({ err: "Image not posted !" + err });
-//       });
-//     })
-//     .catch((err) => res.status(500).json({err: "User not Found ! " + err }))
-// }
 
 // On exporte la logique deleteUser pour que l'utilisateur puisse supprimer son compte
 
