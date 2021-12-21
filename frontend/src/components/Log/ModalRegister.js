@@ -34,6 +34,7 @@ export default function ModalRegister() {
     const passwordError = document.getElementById('password-error');
 
       if(password.match(passwordRegex)) {
+        passwordError.style.display = "none";
         return true;
       } else {
         passwordError.innerHTML = "Votre password est incorrect, il doit contenir </br> entre 4 et 8 caractères et inclure un nombre! ⚠️"
