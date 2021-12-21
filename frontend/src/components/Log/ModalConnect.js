@@ -9,37 +9,8 @@ export default function ModalConnect() {
   const [password, setPassword] = useState("");
 
 
-  const isEmail = () => {
-    const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    const emailError = document.getElementById('email-error');
-  
-    if(email.match(regexEmail)) {
-      emailError.innerHTML ="E-mail:"
-      emailError.style.color ="#000"
-      return true;
-    } else {
-      emailError.innerHTML = "Votre e-mail est incorrect ! ⚠️"
-      emailError.classList.remove("texte-dark")
-      emailError.style.color = "#b31b1b";
-      return false
-    }
-  }
 
-   const isPassword = () => {
-    const passwordRegex = /^(?=.*\d).{4,8}$/;
-    const passwordError = document.getElementById('password-label');
 
-      if(password.match(passwordRegex)) {
-        passwordError.innerHTML ="Mot de passe:"
-        passwordError.style.color ="#000"
-        return true;
-      } else {
-        passwordError.innerHTML = "Votre password est incorrect ! ⚠️"
-        passwordError.classList.remove("texte-dark")
-        passwordError.style.color = "#b31b1b";
-        return false
-      }
-   }
 
   // On créer la fonction handleSubmit pour que l'utilisateur se connecte
   const handleSubmit = (e) => {
@@ -47,7 +18,7 @@ export default function ModalConnect() {
     e.preventDefault();
      
     // Si email et password sont remplie et correct alors on appelle axios pour post avec l'api du backend
-    if(isEmail() && isPassword()) {
+    if(email && password) {
       axios.post(`${process.env.REACT_APP_API_URL}api/auth/login`, {
         email,
         password,
@@ -62,7 +33,7 @@ export default function ModalConnect() {
         const status = document.querySelector('.status');
 
         // Sinon on renvoie une erreur dans la div status
-        status.innerHTML = 'Veuillez remplir correctement le formulaire !'
+        status.innerHTML = 'Vos idenfiants sont incorrect, veuillez réessayer'
         status.style.color = '#fff'
         status.style.background = 'red'
         status.style.padding = '10px'

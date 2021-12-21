@@ -18,7 +18,7 @@ const Like = models.Like;
 const mailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-
+  const passwordRegex = /^(?=.*\d).{4,8}$/;
 // Controllers
 
 // On exporte la logique register pour créer un nouvelle utilisateur
@@ -36,10 +36,12 @@ exports.register = (req, res, next) => {
     return res.status(400).json({ error:" All fields are not filled !"});
   }
 
-  if(password <= 4 || password >= 15) {
-    res.status(400).json({ error:" Le mot de passe rentrez est incorrect, il doit contenir entre 4 et 15 caractères !"});
+  // Si le mot de passe n'est pas entre 4 et 15 caractères
+  if (!passwordRegex.test(password)) {
+    return res.status(400).json({
+      message: "password invalid (must length 4 - 8 and includes a number)",
+    });
   }
-
   // Verify if user is already in database
 
   User.findOne({
@@ -50,6 +52,7 @@ exports.register = (req, res, next) => {
 
     .then((userFound) => {
       
+      // Sécurité pour ne pas avoir deux e-mail pareille
         if(userFound !== null) {
           return res.status(400).json({ error: 'Cette adresse e-mail est déjà utilisé'})
         }
@@ -119,7 +122,7 @@ exports.login = (req, res, next) => {
         .catch((err) => res.status(500).json({ err }));
     })
     .catch((err) => res.status(500).json({ err }));
-};
+}; 
 
 // On exporte la logique modifyUser pour modifier (l'image) et la bio de l'utlisateur
 

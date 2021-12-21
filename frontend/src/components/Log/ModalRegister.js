@@ -31,15 +31,12 @@ export default function ModalRegister() {
 
   const isPassword = () => {
     const passwordRegex = /^(?=.*\d).{4,8}$/;
-    const passwordError = document.getElementById('password-label');
+    const passwordError = document.getElementById('password-error');
 
       if(password.match(passwordRegex)) {
-        passwordError.innerHTML ="Mot de passe:"
-        passwordError.style.color ="#000"
         return true;
       } else {
-        passwordError.innerHTML = "Votre password est incorrect ! ⚠️"
-        passwordError.classList.remove("texte-dark")
+        passwordError.innerHTML = "Votre password est incorrect, il doit contenir </br> entre 4 et 8 caractères et inclure un nombre! ⚠️"
         passwordError.style.color = "#b31b1b";
         return false
       }
@@ -64,11 +61,10 @@ export default function ModalRegister() {
   const handleSubmit = (e) => {
 
     e.preventDefault();
-    //  const confirmPassword = document.getElementById('confirmPassword')
      const status = document.querySelector('.status');
      
      // Si username, password et email sont remplis et correct alors on utilise axios pour appeller l'api du backend
-     if(isUsername() && isEmail() && isPassword()) {
+     if(isUsername() && isEmail() && isPassword(true)) {
        axios.post(`${process.env.REACT_APP_API_URL}api/auth/register` , {
         username,
         email,
@@ -82,17 +78,27 @@ export default function ModalRegister() {
         status.style.background = 'green'
         status.style.padding = '10px'
         status.style.opacity = '1'
+        setEmail('')
+        setBio("")
+        setPassword("")
+        setUsername("")
+        isPassword("true")
 
         setTimeout(() => {
           status.style.opacity = '0'
         }, 5000)
         
       })
-      .catch((err) => console.log(err))
+      .catch(() => {
+        status.innerHTML = 'Les champs requis sont incorrect !'
+        status.style.color = '#fff'
+        status.style.background = 'red'
+        status.style.padding = '10px'
+      })
     } else {
       isEmail(null)
-      isPassword(null)
       isUsername(null)
+      isPassword(null)
       // Sinon on renvoie une erreur dans la div status
       status.innerHTML = 'Veuillez remplir correctement le formulaire !'
       status.style.color = '#fff'
@@ -149,8 +155,8 @@ export default function ModalRegister() {
             className="form-control fs-4"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            
           />
+          <p id="password-error" className="text-white"></p>
 
           <label htmlFor="bio" className="fs-4 texte-dark">
            Bio:

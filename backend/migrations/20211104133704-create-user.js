@@ -31,6 +31,7 @@ module.exports = {
       isAdmin: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,
