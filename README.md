@@ -16,13 +16,13 @@
 
 <h2>Installation</h2>
 
-<ol> Front-end:
+<ol><strong>Front-end:</strong>
   <li>cd frontend</li>
   <li>npm install</li>
   <li>npm start </li>
 </ol>
 
-<ol> Back-end:
+<ol><strong>Back-end:</strong>
    
    <li>cd backend</li>
    <li>npm install</li>
